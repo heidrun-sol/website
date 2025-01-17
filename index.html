@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta property="og:title" content="Heidrun - Gateway to Valhalla">
+        <meta property="og:description" content="Dive into Heidrun, the ultimate Web3 gaming adventure with immersive experiences, live charts, and staking rewards. Join the community shaping the future of crypto gaming!">
+        <meta property="og:image" content="https://heidrun.xyz/images/heidrun-web.jpg">
+        <meta property="og:video" content="https://b-whale-block.github.io/heidrun./videos/og-video.mp4">
+        <meta property="og:video:type" content="video/mp4">
+        <meta property="og:video:width" content="1280">
+        <meta property="og:video:height" content="720">
+        <meta property="og:url" content="https://heidrun.xyz">
+        <meta property="og:type" content="website">
+
+        <title>Heidrun - Gateway to Valhalla</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+        <link rel="manifest" href="site.webmanifest">
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.73.0/lib/index.iife.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jup-ag/core"></script>
+        <script defer src="script.js"></script>
+    </head>    
+<body>
+    <!--Sticky button on smaller screens-->
+    <button id="walletInfoButton" class="sticky-wallet-info hidden">Wallet Info</button>
+    <div id="toastContainer" class="toast-container"></div>
+
+    <header class="header">
+        <div class="logo">
+            <video autoplay loop muted playsinline class="logo-video">
+                <source src="images/logo.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="header-socials">
+            <a href="https://t.me/heidrunportal" target="_blank" title="Telegram">
+                <img src="images/telegram-logo.png" alt="Telegram">
+            </a>
+            <a href="https://x.com/HeidrunSol" target="_blank" title="X">
+                <img src="images/x-logo.png" alt="X">
+            </a>
+            <a href="https://www.tiktok.com/@heidrun_sol" target="_blank" title="TikTok">
+                <img src="images/tiktok-icon.png" alt="TikTok">
+            </a>
+            <a href="https://www.instagram.com/heidrunsolana" target="_blank" title="Instagram">
+                <img src="images/instagram-icon.png" alt="Instagram">
+            </a>
+        </div>
+        <nav class="navbar">
+            <a href="#hero" class="home-link">Home</a>
+            <a href="#about">About</a>
+            <a href="Merchandise/index.html">Merchandise</a>
+            <a href="#game">Game</a>
+            <a href="#chart">Chart</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#staking">Staking</a>
+            <button class="cta-button">Buy $HEIDRUN</button>
+        </nav>        
+        <button class="hamburger-menu" id="menuToggle">☰</button>
+    </header> 
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to <span class="highlight">$HEIDRUN</span></h1>
+            <p>Your Gateway to Valhalla on the Blockchain</p>
+            <div class="hero-buttons">
+                <!-- Row 1 -->
+                <div class="top-buttons">
+                    <button class="playg-game-button" id="playAlphaButton">
+                        <img src="images/goat-head-logo.png" alt="playg-game-button-logo" class="playg-game-button-logo">
+                        Play Alpha V1.1
+                    </button>
+            
+                    <a href="https://t.me/heidrunportal" class="btn btn-secondary" target="_blank">
+                        <img src="images/telegram.png" alt="Telegram Icon" class="btn-icon"> Join the Community
+                    </a>
+                </div>
+            
+                <!-- Row 2 -->
+                <div class="bottom-buttons">
+                    <button class="merch-store-button" id="merchStoreButton" onclick="window.open('Merchandise/index.html', '_blank')">
+                        <img src="images/merch-icon.png" alt="merch-button-logo" class="merch-store-logo">
+                        Merch Store
+                    </button>
+                </div>
+            </div>
+                                
+        </div>
+        <div class="hero-image">
+            <img src="images/valhalla-goat.png" alt="Heidrun Viking Goat" class="mascot">
+        </div>
+    </section>
+    
+    <section id="about" class="section">
+        <h1>About Heidrun</h1>
+        <div class="about-content">
+            <p>
+                Heidrun is a forward-thinking project that blends advanced blockchain technology with powerful AI tools. By combining Web3 gaming, decentralized utilities, and community-driven rewards, Heidrun redefines innovation in the crypto space.
+            </p>
+            <p>
+                Whether you're a gamer, investor, or blockchain enthusiast, Heidrun delivers immersive experiences and practical tools tailored to your needs.
+            </p>
+        </div>
+    
+        <div class="features">
+            <h2>Why Choose Heidrun?</h2>
+            <ul>
+                <li><strong>Innovative Utilities:</strong> AI-driven tools designed to optimize your crypto experience.</li>
+                <li><strong>Immersive Web3 Gaming:</strong> Seamless integration of gaming with blockchain technology.</li>
+                <li><strong>Community Empowerment:</strong> Join a growing network shaping the future of blockchain.</li>
+            </ul>
+        </div>
+    
+        <div class="utilities">
+            <h2>Our Utilities</h2>
+            <div class="utilities-grid">
+                <div class="utility-item">
+                    <video autoplay loop muted class="utility-image">
+                        <source src="videos/video-bot-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Video Bot</h3>
+                    <p>Create engaging AI-generated videos for campaigns and content.</p>
+                    <a href="https://t.me/HeidrunAI_bot" target="_blank" class="about-btn">Try @HeidrunAI_bot</a>
+                </div>
+                <div class="utility-item">
+                    <img src="images/meme-bot-preview.jpg" alt="Meme Bot Preview" class="utility-image">
+                    <h3>Meme Bot</h3>
+                    <p>Generate shareable, viral memes in seconds with AI support.</p>
+                    <a href="https://t.me/HeidrunAImeme_bot" target="_blank" class="about-btn">Explore @HeidrunAImeme_bot</a>
+                </div>
+                <div class="utility-item">
+                    <video autoplay loop muted class="utility-image">
+                        <source src="videos/portfolio-bot-preview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3>Portfolio Bot</h3>
+                    <p>Track and manage your crypto portfolio effortlessly.</p>
+                    <a href="https://t.me/CryptoPortfolio_tracker_bot" target="_blank" class="about-btn">Discover @CryptoPortfolio_tracker_bot</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="contract-container">
+            <h3>Contract Address</h3>
+            <span id="contract-address" class="copyable">DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM</span>
+            <button class="about-copy-btn" onclick="navigator.clipboard.writeText('DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM')">Copy</button>
+        </div>
+    
+        <p class="cta-text">
+            The Heidrun journey is just beginning. Join us now and help shape the future of blockchain innovation.
+        </p>
+    </section>
+               
+
+    <section id="game" class="games-section">
+        <h1>Alpha Heidrun Rush</h1>
+        <h2>🎮 V1.1 Now Live and Playable! 🎮</h2>
+        <div class="game-info">
+            <p>
+                <strong>About the Game:</strong> Alpha V1.0 of Heidrun Rush is a Candy Crush-style game where players can enjoy exciting gameplay while transacting directly in Solana. Purchases in-game go to the dev wallet, and we are exploring whether to <strong>burn Heidrun</strong> or use it for the <strong>staking rewards pool</strong>.
+            </p>
+            <p>
+                <strong>Future Plans:</strong> In Alpha V2.0, we aim to enable transactions directly in Heidrun and integrate feedback from players for an enhanced experience.
+            </p>
+            <p>
+                <strong>Game Hosting:</strong> The game is hosted directly on Heidrun’s servers and uses Solana’s approved Unity SDK for web3 connection. Please choose <strong>Mobile Wallet Adapter → Phantom/Solflare</strong> to connect.
+            </p>
+        </div>
+        <div class="game-actions">
+            <button class="cta-button" onclick="window.open('./heidrunrush', '_blank');">
+                Play Alpha V1.1
+            </button>            
+        </div>
+    </section> 
+    
+    <section id="chart" class="section">
+        <h1>Live $HEIDRUN Chart</h1>
+        <div class="chart-container">
+            <!-- Chart Canvas -->
+            <canvas id="chartCanvas" width="600" height="400"></canvas>
+    
+            <!-- Fallback Video -->
+            <video id="chart-video" autoplay loop muted playsinline style="display: none;">
+                <source src="videos/heidrun-lambo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    
+        <!-- Chart Summary -->
+        <p id="chart-summary" style="margin-top: 20px; font-size: 1rem; color: #ffd700; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);">
+            Loading chart data...
+        </p>
+    
+        <!-- Fallback Message -->
+        <p id="fallback-message" style="display: none;">
+            "Oops! The chart hasn’t loaded. Heidrun went to check what happened!"
+        </p>
+    
+        <!-- Fallback Button -->
+        <a href="https://dexscreener.com/solana/fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4" 
+           id="fallback-button" 
+           class="btn btn-secondary" 
+           target="_blank" 
+           style="display: none;">
+            View the Chart on Dexscreener
+        </a>
+    </section>    
+
+    <section id="roadmap" class="section">
+        <h1 class="roadmap-title">Roadmap</h1>
+        <div class="roadmap-timeline">
+          
+            <div class="roadmap-phase left">
+                <h2>Q4 2024</h2>
+                <ul>
+                    <li><strong>Token Launch:</strong> Successful launch of $HEIDRUN.</li>
+                    <li><strong>Initial Game Launch:</strong> Players engage with our first game.</li>
+                    <li><strong>Staking Launch:</strong> Earn rewards by staking $HEIDRUN.</li>
+                    <li><strong>Alpha Game Launch:</strong> 25th December 2024.</li>
+                    <li><strong>Flooz Sign-Up:</strong> Enabling direct purchases.</li>
+                </ul>
+            </div>
+    
+            <div class="roadmap-phase right">
+                <h2>Q1-Q2 2025</h2>
+                <ul>
+                    <li><strong>AR Game Development:</strong> Begin creating immersive AR gaming experiences.</li>
+                    <li><strong>Community Growth:</strong> Expand the Viking community through partnerships.</li>
+                    <li><strong>Improved Staking Features:</strong> Launch tiered rewards for long-term stakers.</li>
+                </ul>
+            </div>
+    
+            <div class="roadmap-phase left">
+                <h2>Q3-Q4 2025</h2>
+                <ul>
+                    <li><strong>AR Game Launch:</strong> Full launch of the Augmented Reality game.</li>
+                    <li><strong>Expanded Ecosystem:</strong> New gameplay mechanics and token utilities.</li>
+                    <li><strong>Global Partnerships:</strong> Collaborate with major gaming and crypto platforms.</li>
+                </ul>
+            </div>
+    
+            <div class="roadmap-phase right">
+                <h2>2026 and Beyond</h2>
+                <ul>
+                    <li><strong>Valhalla Expansion:</strong> Establish Heidrun as a leading Web3 gaming platform.</li>
+                    <li><strong>Community-Driven Projects:</strong> Launch initiatives driven by the Heidrun community.</li>
+                    <li><strong>Continual Innovation:</strong> Introduce cutting-edge features and gameplay experiences.</li>
+                </ul>
+            </div>
+        </div>
+    </section> 
+
+    <section id="staking" class="section">
+        <h1>Staking</h1>
+        <p>
+            Staking allows you to earn rewards by holding and locking your $HEIDRUN tokens. 
+            It’s a simple and secure way to grow your wealth while supporting the network.
+        </p>
+        <div class="staking-benefits">
+            <h2>Benefits of Staking</h2>
+            <ul>
+                <li>Earn passive income through staking rewards.</li>
+                <li>Support the $HEIDRUN ecosystem and its stability.</li>
+                <li>Access exclusive perks for long-term stakers.</li>
+            </ul>
+        </div>
+        <div class="staking-how">
+            <h2>How Staking Works</h2>
+            <p>
+                1. Acquire $HEIDRUN tokens and connect your wallet.<br>
+                2. Use our trusted staking partner <strong>Smithii.io</strong> to stake your tokens.<br>
+                3. Select your preferred staking duration and lock your tokens.<br>
+                4. Start earning rewards instantly!
+            </p>
+        </div>
+        <a href="https://stake.smithii.io/heidrun" class="btn btn-game" target="_blank">Stake Now on Smithii.io</a>
+    </section>
+    
+    <section id="socials" class="socials-section">
+        <h2>Join the Heidrun Goat Community</h2>
+        <p>Stay updated with the latest news, exclusive giveaways, and more!</p>
+        <div class="socials-container">
+            <!-- Social Icons -->
+            <div class="socials-grid">
+                <a href="https://t.me/heidrunportal" target="_blank" class="social-icon" title="Telegram">
+                    <img src="images/telegram-logo.png" alt="Telegram">
+                </a>
+                <a href="https://x.com/HeidrunSol" target="_blank" class="social-icon" title="X">
+                    <img src="images/x-logo.png" alt="X">
+                </a>
+                <a href="https://www.tiktok.com/@heidrun_sol" target="_blank" class="social-icon" title="Tiktok">
+                    <img src="images/tiktok-icon.png" alt="Tiktok">
+                </a>
+                <a href="https://www.instagram.com/heidrunsolana" target="_blank" class="social-icon" title="Instagram">
+                    <img src="images/instagram-icon.png" alt="Instagram">
+                </a>
+            </div>
+        
+            <div class="goat-image">
+                <img src="videos/phone-in-hand-unscreen.gif" alt="Heidrun Goat Character">
+            </div>
+        </div>
+    </section>            
+    
+    <footer>
+        <p>&copy; 2025 Heidrun. All Rights Reserved.</p>
+    </footer> 
+
+    <!-- Modal Background -->
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <h2>Buy $HEIDRUN</h2>
+            <p>Choose your payment method:</p>
+            <div class="pay-options">
+                <!-- Connect Wallet -->
+                <button class="pay-option connect-wallet">
+                    <img src="images/solana-logo.png" alt="Solana Logo" class="payment-icon connect-icon">
+                    <span>Connect Wallet</span>
+                </button>
+    
+                <!-- Buy on Bitget -->
+                <a href="https://web3.bitget.com/en/swap/sol/DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM"
+                    class="pay-option bitget-option"
+                    target="_blank">
+                    <img src="images/bitget-logo.png" alt="Bitget Wallet" class="payment-icon bitget-icon">
+                    <span>Buy on Bitget Wallet</span>
+                </a>
+
+                <!-- Buy on Raydium -->
+                <a href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM"
+                   class="pay-option raydium-option"
+                   target="_blank">
+                    <img src="images/raydium-logo.png" alt="Raydium Logo" class="payment-icon raydium-icon">
+                    <span>Buy on Raydium</span>
+                </a>
+    
+                <!-- Buy with Bank Card -->
+                <a href="https://flooz.xyz/trade/DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM/solana/heidrun/heidrun"
+                   class="pay-option card-option"
+                   target="_blank">
+                    <img src="images/debit-card-icon.png" alt="Bank Card" class="payment-icon card-icon">
+                    <span>Buy with Bank Card</span>
+                </a>
+            </div>
+            <button class="close-modal">Close</button>
+        </div>
+    </div>    
+
+    <!-- Wallet Info Modal -->
+    <div id="walletInfoModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" id="walletCloseModal">X</button>
+          <h2>Wallet Balance</h2>
+          <div class="balance-section">
+            <div class="balance-row">
+              <span class="token-name">$HEIDRUN:</span>
+              <span class="token-value" id="heidrunBalance">0.00</span>
+            </div>
+            <div class="balance-row">
+              <span class="token-name">$SOLANA:</span>
+              <span class="token-value" id="solBalance">1.0600</span>
+            </div>
+          </div>
+      
+            <h3>Swap $HEIDRUN</h3>
+            <div class="swap-section">
+                <!-- From Section -->
+                <div class="balance-row">
+                    <label for="fromToken" class="token-name">From:</label>
+                    <div class="input-container">
+                        <input type="text" id="fromToken" value="SOL" readonly>
+                        <input type="number" id="fromAmount" placeholder="0" min="0">
+                    </div>
+                </div>
+                
+                <button id="swapButton" class="swap-icon">
+                    <img src="images/swap-icon.png" alt="Swap">
+                </button>
+                
+                <div class="balance-row">
+                    <label for="toToken" class="token-name">To:</label>
+                    <div class="input-container">
+                        <input type="text" id="toToken" value="HEIDRUN" readonly>
+                        <input type="number" id="toAmount" placeholder="0" min="0">
+                    </div>
+                </div>
+            
+      
+                <!-- Slippage Tolerance -->
+                <div class="slippage-container">
+                    <label for="slippageTolerance">Slippage Tolerance (%):</label>
+                    <input type="number" id="slippageTolerance" value="1" min="0" max="100">
+                </div>
+      
+                <!-- Action Buttons -->
+                <button id="confirmSwapButton" class="btn btn-success">Confirm Swap</button>
+                <button id="disconnectWalletButton" class="btn btn-danger">Disconnect</button>
+            </div>
+        </div>
+    </div>    
+      
+</body>
+</html>
