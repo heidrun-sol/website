@@ -1,4 +1,3 @@
-// Wait for DOM to fully load 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Website loaded and interactive!');
     console.log(typeof solanaWeb3 !== 'undefined' ? 'Solana Web3 is loaded' : 'Solana Web3 is not loaded');
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.textContent = navMenu.classList.contains('active') ? 'X' : '☰';
         
             // Manage visibility of social icons
-            const socials = document.querySelector('.header-socials'); // Ensure this selector matches your HTML
+            const socials = document.querySelector('.header-socials');
             if (navMenu.classList.contains('active')) {
                 socials.classList.add('hidden');
             } else {
