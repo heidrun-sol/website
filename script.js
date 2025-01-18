@@ -1,6 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Website loaded and interactive!');
     console.log(typeof solanaWeb3 !== 'undefined' ? 'Solana Web3 is loaded' : 'Solana Web3 is not loaded');
+    //ribbon
+    const container = document.getElementById('announcement-container');
+    //announcements can be fetched from API, Telegram, or database
+    const fetchAnnouncements = async () => {
+        try {
+            // API call replace endpoint
+            const response = await fetch('https://example.com/api/announcements');
+            if (!response.ok) throw new Error('Failed to fetch announcements');
+            const data = await response.json();
+
+            return data.messages;
+        } catch (error) {
+            console.error('Error fetching announcements:', error);
+            return [
+                "🛍️ Get ready! The Heidrun Merchandise Store is coming soon! 🛍️",
+
+                "🎮 Exciting updates! Heidrun Rush V2 is coming soon! 🎮",
+                "💰 Don't miss out! Earn rewards by staking $HEIDRUN today! 💰",
+                "",
+            ];
+        }
+    }; 
+
+    const populateAnnouncements = async () => {
+        const messages = await fetchAnnouncements();
+        container.innerHTML = messages.map(msg => `<span>${msg}</span>`).join('');
+        container.innerHTML += container.innerHTML;
+    };
+
+    let offset = 0;
+    const scrollSpeed = 0.5; // Lower = slower scrolling
+
+    const scrollAnnouncements = () => {
+        offset -= scrollSpeed;
+        if (Math.abs(offset) >= container.scrollWidth / 2) {
+            offset = 0; // Reset when halfway 
+        }
+        container.style.transform = `translateX(${offset}px)`;
+        requestAnimationFrame(scrollAnnouncements);
+    };
+
+    populateAnnouncements().then(() => {
+        scrollAnnouncements();
+    });
 
     // ========================
     // 1. Navigation Controls
@@ -16,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.textContent = navMenu.classList.contains('active') ? 'X' : '☰';
         
             // Manage visibility of social icons
-            const socials = document.querySelector('.header-socials');
+            const socials = document.querySelector('.header-socials'); 
             if (navMenu.classList.contains('active')) {
                 socials.classList.add('hidden');
             } else {
