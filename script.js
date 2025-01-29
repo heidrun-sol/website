@@ -6,42 +6,42 @@ document.addEventListener('DOMContentLoaded', () => {
     //announcements can be fetched from API, Telegram, or database
     const fetchAnnouncements = async () => {
         try {
-            // API call replace endpoint
+            // API call - replace with actual endpoint
             const response = await fetch('https://example.com/api/announcements');
             if (!response.ok) throw new Error('Failed to fetch announcements');
             const data = await response.json();
-
+    
             return data.messages;
         } catch (error) {
             console.error('Error fetching announcements:', error);
             return [
-                "🛍️ Get ready! The Heidrun Merchandise Store is coming soon! 🛍️",
-
-                "🎮 Exciting updates! Heidrun Rush V2 is coming soon! 🎮",
-                "💰 Don't miss out! Earn rewards by staking $HEIDRUN today! 💰",
-                "",
+                "🛍️ Get ready! The Heidrun Merchandise Store is launching soon – exclusive gear for true blockchain warriors! 🚀",
+                "🔥 Nearly **50% of Heidrun is already staked**! Don't miss out before it's too late! ⚡🚀"
             ];
         }
-    }; 
+    };
 
     const populateAnnouncements = async () => {
         const messages = await fetchAnnouncements();
-        container.innerHTML = messages.map(msg => `<span>${msg}</span>`).join('');
-        container.innerHTML += container.innerHTML;
+        
+        // Duplicate messages for seamless infinite scrolling
+        container.innerHTML = messages.map(msg => `<span>${msg}</span>`).join('') + 
+                              messages.map(msg => `<span>${msg}</span>`).join('');
     };
-
+    
     let offset = 0;
     const scrollSpeed = 0.5; // Lower = slower scrolling
-
+    
     const scrollAnnouncements = () => {
         offset -= scrollSpeed;
         if (Math.abs(offset) >= container.scrollWidth / 2) {
-            offset = 0; // Reset when halfway 
+            offset = 0; // Reset when halfway to loop seamlessly
         }
         container.style.transform = `translateX(${offset}px)`;
         requestAnimationFrame(scrollAnnouncements);
     };
-
+    
+    // Initialize announcement scrolling
     populateAnnouncements().then(() => {
         scrollAnnouncements();
     });
