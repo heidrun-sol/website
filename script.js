@@ -1,37 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Website loaded and interactive!');
     console.log(typeof solanaWeb3 !== 'undefined' ? 'Solana Web3 is loaded' : 'Solana Web3 is not loaded');
-    //ribbon
+    // Ribbon
     const container = document.getElementById('announcement-container');
-    //announcements can be fetched from API, Telegram, or database
+
+    // Fetch announcements from API or use default messages on error
     const fetchAnnouncements = async () => {
         try {
             // API call - replace with actual endpoint
             const response = await fetch('https://example.com/api/announcements');
             if (!response.ok) throw new Error('Failed to fetch announcements');
             const data = await response.json();
-    
+
             return data.messages;
         } catch (error) {
             console.error('Error fetching announcements:', error);
             return [
-                "🛍️ Get ready! The Heidrun Merchandise Store is launching soon – exclusive gear for true blockchain warriors! 🚀",
-                "🔥 Nearly **50% of Heidrun is already staked**! Don't miss out before it's too late! ⚡🚀"
+                "🛍️ The Heidrun Merchandise Store is now live! Grab your exclusive blockchain warrior gear today! 🚀",
+                "💥 Join the movement! Heidrun is shaping the future of blockchain innovation. 🌐"
             ];
         }
     };
 
+    // Populate the container with announcements and duplicate for seamless scrolling
     const populateAnnouncements = async () => {
         const messages = await fetchAnnouncements();
-        
-        // Duplicate messages for seamless infinite scrolling
-        container.innerHTML = messages.map(msg => `<span>${msg}</span>`).join('') + 
-                              messages.map(msg => `<span>${msg}</span>`).join('');
+
+        // Duplicate messages to create a smooth infinite loop
+        container.innerHTML = messages.map(msg => `<span>${msg}</span>`).join('');
+        container.innerHTML += container.innerHTML; // Double the content for seamless scrolling
     };
-    
+
     let offset = 0;
-    const scrollSpeed = 0.5; // Lower = slower scrolling
-    
+    const scrollSpeed = 0.5; // Adjust this value to control the scrolling speed
+
+    // Scroll announcements infinitely
     const scrollAnnouncements = () => {
         offset -= scrollSpeed;
         if (Math.abs(offset) >= container.scrollWidth / 2) {
@@ -40,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.transform = `translateX(${offset}px)`;
         requestAnimationFrame(scrollAnnouncements);
     };
-    
-    // Initialize announcement scrolling
+
+    // Initialize the announcement scrolling
     populateAnnouncements().then(() => {
         scrollAnnouncements();
     });
