@@ -23,7 +23,6 @@
         <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
         <link rel="manifest" href="site.webmanifest">
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script src="chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
         <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.73.0/lib/index.iife.min.js"></script>
@@ -42,6 +41,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
+    
         <div class="header-socials">
             <a href="https://t.me/heidrunportal" target="_blank" title="Telegram">
                 <img src="images/telegram-logo.png" alt="Telegram">
@@ -59,18 +59,21 @@
                 <img src="images/coingecko-icon.png" alt="CoinGecko">
             </a>
         </div>
+    
+        <button id="menuToggle" class="hamburger-menu">☰</button>
+    
         <nav class="navbar">
             <a href="#hero" class="home-link">Home</a>
             <a href="#about">About</a>
-            <a href="https://heidrunfanmerch.store" target="_blank">HeidrunFanStore</a>
+            <a href="/heidrunmerchstore">HeidrunMerchStore</a>
             <a href="#game">Game</a>
+            <a href="#ar-realms">Heidrun AR Realms</a>
+            <a href="#nfts">NFTs</a>
             <a href="#chart">Chart</a>
             <a href="#roadmap">Roadmap</a>
-            <!--<a href="#staking">Staking</a>-->
             <button class="cta-button">Buy $HEIDRUN</button>
-        </nav>                
-        <button class="hamburger-menu" id="menuToggle">☰</button>
-    </header>
+        </nav>
+    </header>    
     
     <!--Ribbon-->
     <div class="announcement-bar">
@@ -110,9 +113,35 @@
             <img src="images/valhalla-goat.png" alt="Heidrun Viking Goat" class="mascot">
         </div>
     </section>
-    
+
+    <section id="press" class="press-strip">
+        <div class="press-inner">
+          <h2 class="press-title">🚀 Featured On</h2>
+          <div class="press-logos">
+            <img src="images/logos/apnews.png" alt="AP News">
+            <img src="images/logos/businessinsider.png" alt="Business Insider">
+            <img src="images/logos/marketwatch.png" alt="MarketWatch">
+            <img src="images/logos/morningstar.png" alt="Morningstar">
+            <img src="images/logos/digitaljournal.png" alt="Digital Journal">
+          </div>
+          <p class="press-more">
+            And <a href="articles/heidrun_press_coverage.xlsx" target="_blank">800+ more</a> global features.
+          </p>
+        </div>
+    </section>            
+      
     <section id="about" class="section">
         <h1>About Heidrun</h1>
+        
+        <div class="mythology-intro">
+            <p>
+                In Norse mythology, Heidrun is a mythical goat that resides on the roof of Valhalla, the great hall of the gods in Asgard. She feeds on the leaves of the sacred tree Læraðr and produces an endless supply of mead for the Viking warriors who have died in battle and are brought to Valhalla by Odin, the Norse god. 
+            </p>
+            <p>
+                Like her mythological counterpart, Heidrun the project is designed to provide an endless stream of innovation, opportunities, and rewards for its community. We blend the enduring spirit of Norse legends with cutting-edge blockchain technology and AI to empower our users.
+            </p>
+        </div>
+    
         <div class="about-content">
             <p>
                 Heidrun is a forward-thinking project that blends advanced blockchain technology with powerful AI tools. By combining Web3 gaming, decentralized utilities, and community-driven rewards, Heidrun redefines innovation in the crypto space.
@@ -135,30 +164,12 @@
             <h2>Our Utilities</h2>
             <div class="utilities-grid">
                 <div class="utility-item">
-                    <video autoplay loop muted class="utility-image">
-                        <source src="videos/video-bot-preview.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h3>Video Bot</h3>
-                    <p>Create engaging AI-generated videos for campaigns and content.</p>
-                    <a href="https://t.me/HeidrunAI_bot" target="_blank" class="about-btn">Try @HeidrunAI_bot</a>
+                    <img src="images/meme-bot-preview.jpg" alt="Heidrun Media Bot" class="utility-image">
+                    <h3>Heidrun Media Bot</h3>
+                    <p>Your all-in-one tool for AI video, memes – now supercharged and unified.</p>
+                    <a href="https://t.me/HeidrunAIMedia_bot" target="_blank" class="about-btn">Launch @HeidrunAIMedia_bot</a>
                 </div>
-                <div class="utility-item">
-                    <img src="images/meme-bot-preview.jpg" alt="Meme Bot Preview" class="utility-image">
-                    <h3>Meme Bot</h3>
-                    <p>Generate shareable, viral memes in seconds with AI support.</p>
-                    <a href="https://t.me/HeidrunAImeme_bot" target="_blank" class="about-btn">Explore @HeidrunAImeme_bot</a>
-                </div>
-                <div class="utility-item">
-                    <video autoplay loop muted class="utility-image">
-                        <source src="videos/portfolio-bot-preview.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h3>Portfolio Bot</h3>
-                    <p>Track and manage your crypto portfolio effortlessly.</p>
-                    <a href="https://t.me/CryptoPortfolio_tracker_bot" target="_blank" class="about-btn">Discover @CryptoPortfolio_tracker_bot</a>
-                </div>
-            </div>
+            </div>            
         </div>
     
         <div class="contract-container">
@@ -170,8 +181,7 @@
         <p class="cta-text">
             The Heidrun journey is just beginning. Join us now and help shape the future of blockchain innovation.
         </p>
-    </section>
-               
+    </section>    
 
     <section id="game" class="games-section">
         <h1>Alpha Heidrun Rush</h1>
@@ -192,110 +202,162 @@
                 Play Alpha V1.1
             </button>            
         </div>
-    </section> 
+    </section>
+    
+    <section id="ar-realms" class="section">
+        <h1 class="section-title">⚔️ HEIDRUN AR REALMS ⚔️</h1>
+        <p class="intro">Where Norse Mythology Meets Your World</p>
+      
+        <h2>🌍 DISCOVER THE NINE REALMS IN YOUR BACKYARD</h2>
+        <p>
+          Heidrun AR Realms transforms your everyday surroundings into a living Norse mythology adventure. Using cutting-edge AR technology, we bring legendary creatures and ancient artifacts from Asgard, Jotunheim, and beyond into your reality.
+        </p>
+        <ul>
+          <li>Encounter frost giants near water fountains</li>
+          <li>Discover light elves dancing in local parks</li>
+          <li>Witness dwarven craftsmen forging mythical weapons in urban centers</li>
+        </ul>
+      
+        <h2>🧝‍♂️ COLLECT LEGENDARY BEINGS</h2>
+        <p>
+          From Odin’s ravens to fearsome wolves descended from Fenrir, collect dozens of Norse mythology creatures to discover, battle, and evolve.
+        </p>
+        <p>
+          Each being has unique strengths tied to their realm. Train your collection, evolve them, and build your ultimate mythological team.
+        </p>
+      
+        <h2>⚔️ BATTLE FOR GLORY</h2>
+        <p>Master tactical turn-based combat against wild creatures or challenge other players!</p>
+        <ul>
+          <li>Use elemental advantages, special abilities, and rune enhancements</li>
+          <li>Join forces with friends in legendary raid boss battles</li>
+          <li>Prove your might and rise through the ranks</li>
+        </ul>
+      
+        <h2>🏰 CLAIM YOUR TERRITORY</h2>
+        <p>Stake your claim in the real world to establish your legacy in Valhalla!</p>
+        <ul>
+          <li>Build structures to generate resources, attract rare creatures, and boost allies</li>
+          <li>Join a guild and battle for control in epic realm-vs-realm conflicts</li>
+        </ul>
+      
+        <h2>⚡️ OUR JOURNEY TO RAGNARÖK: A THREE-PHASE ADVENTURE</h2>
+        <h3>PHASE 1: EXPLORATION BEGINS (Q4 2025)</h3>
+        <ul>
+          <li>Discover 15+ creatures from 4 realms</li>
+          <li>Experience core AR exploration and combat</li>
+          <li>Complete quests and achievements</li>
+          <li>Begin your journey as a Rune Hunter</li>
+          <li>Traditional game economy to build your team</li>
+        </ul>
+      
+        <h3>PHASE 2: POWER OF THE RUNES (Q2/Q3 2026)</h3>
+        <ul>
+          <li>Solana blockchain integration</li>
+          <li>Earn $HRAR tokens through gameplay</li>
+          <li>Unlock 10+ new creatures</li>
+          <li>Join guilds, compete on leaderboards</li>
+          <li>Participate in seasonal events</li>
+        </ul>
+      
+        <h3>PHASE 3: TRUE OWNERSHIP (Q4 2026)</h3>
+        <ul>
+          <li>Rare creatures/items become NFTs</li>
+          <li>Trade freely in the player marketplace</li>
+          <li>Enter PvP tournaments with your NFTs</li>
+          <li>Claim real-world territory</li>
+          <li>Vote on the game's future through community governance</li>
+        </ul>
+      
+        <h2>⚡️ JOIN THE SAGA</h2>
+        <p>
+          Whether you're a mythology buff, AR gamer, or Web3 explorer, Heidrun AR Realms offers an unforgettable adventure.
+        </p>
+        <p>
+          Be part of our phased rollout, shape the evolution of the Nine Realms, and claim your place in digital Valhalla.
+        </p>
+        <p><em>The ravens are watching 👀. The realms are waiting. Your legend begins soon.</em></p>
+    </section>      
     
     <section id="chart" class="section">
-        <h1>Live $HEIDRUN Chart</h1>
-        <div class="chart-container">
-            <!-- Chart Canvas -->
-            <canvas id="chartCanvas" width="600" height="400"></canvas>
-    
-            <!-- Fallback Video -->
-            <video id="chart-video" autoplay loop muted playsinline style="display: none;">
-                <source src="videos/heidrun-lambo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <div class="dex-chart-wrapper">
+          <div id="dexscreener-embed">
+            <iframe 
+              src="https://dexscreener.com/solana/FuWUQTctdsgTpW4ypxmSVnHw5txNo65RoHxzTaK5XKF4?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15">
+            </iframe>
+          </div>
         </div>
-    
-        <!-- Chart Summary -->
-        <p id="chart-summary" style="margin-top: 20px; font-size: 1rem; color: #ffd700; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);">
-            Loading chart data...
+    </section>                  
+
+    <section id="nfts" class="section">
+        <h1 class="section-title">🪙 HEIDRUN NFTs</h1>
+        <p class="nft-intro">Revenue-sharing digital relics from Valhalla.</p>
+      
+        <div class="nft-preview">
+          <img src="images/nft-coded-puzzle.jpg" alt="NFT Coded Teaser" class="nft-blurred">
+          <div class="nft-coming-soon"> Arriving Any Moment... Stay Ready.</div>
+        </div>
+      
+        <p class="nft-description">
+          Heidrun NFTs are not just collectibles — they unlock a share of the project’s future. 
+          Own a piece of Valhalla. Claim your legacy.
         </p>
-    
-        <!-- Fallback Message -->
-        <p id="fallback-message" style="display: none;">
-            "Oops! The chart hasn’t loaded. Heidrun went to check what happened!"
-        </p>
-    
-        <!-- Fallback Button -->
-        <a href="https://dexscreener.com/solana/fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4" 
-           id="fallback-button" 
-           class="btn btn-secondary" 
-           target="_blank" 
-           style="display: none;">
-            View the Chart on Dexscreener
-        </a>
-    </section>    
+    </section>       
 
     <section id="roadmap" class="section">
         <h1 class="roadmap-title">Roadmap</h1>
         <div class="roadmap-timeline">
-          
-            <div class="roadmap-phase left">
-                <h2>Q4 2024</h2>
-                <ul>
-                    <li><strong>Token Launch:</strong> Successful launch of $HEIDRUN.</li>
-                    <li><strong>Initial Game Launch:</strong> Players engage with our first game.</li>
-                    <li><strong>Staking Launch:</strong> Earn rewards by staking $HEIDRUN.</li>
-                    <li><strong>Alpha Game Launch:</strong> 25th December 2024.</li>
-                    <li><strong>Flooz Sign-Up:</strong> Enabling direct purchases.</li>
-                </ul>
-            </div>
-    
-            <div class="roadmap-phase right">
-                <h2>Q1-Q2 2025</h2>
-                <ul>
-                    <li><strong>AR Game Development:</strong> Begin creating immersive AR gaming experiences.</li>
-                    <li><strong>Community Growth:</strong> Expand the Viking community through partnerships.</li>
-                    <li><strong>Improved Staking Features:</strong> Launch tiered rewards for long-term stakers.</li>
-                </ul>
-            </div>
-    
-            <div class="roadmap-phase left">
-                <h2>Q3-Q4 2025</h2>
-                <ul>
-                    <li><strong>AR Game Launch:</strong> Full launch of the Augmented Reality game.</li>
-                    <li><strong>Expanded Ecosystem:</strong> New gameplay mechanics and token utilities.</li>
-                    <li><strong>Global Partnerships:</strong> Collaborate with major gaming and crypto platforms.</li>
-                </ul>
-            </div>
-    
-            <div class="roadmap-phase right">
-                <h2>2026 and Beyond</h2>
-                <ul>
-                    <li><strong>Valhalla Expansion:</strong> Establish Heidrun as a leading Web3 gaming platform.</li>
-                    <li><strong>Community-Driven Projects:</strong> Launch initiatives driven by the Heidrun community.</li>
-                    <li><strong>Continual Innovation:</strong> Introduce cutting-edge features and gameplay experiences.</li>
-                </ul>
-            </div>
-        </div>
-    </section> 
-
-    <!--<section id="staking" class="section">
-        <h1>Staking</h1>
-        <p>
-            Staking allows you to earn rewards by holding and locking your $HEIDRUN tokens. 
-            It’s a simple and secure way to grow your wealth while supporting the network.
-        </p>
-        <div class="staking-benefits">
-            <h2>Benefits of Staking</h2>
+      
+          <div class="roadmap-phase left">
+            <h2>Q4 2024</h2>
             <ul>
-                <li>Earn passive income through staking rewards.</li>
-                <li>Support the $HEIDRUN ecosystem and its stability.</li>
-                <li>Access exclusive perks for long-term stakers.</li>
+              <li><strong>Token Launch:</strong> Successful launch of $HEIDRUN.</li>
+              <li><strong>Initial Game Launch:</strong> Players engage with our first game.</li>
+              <li><strong>Staking Launch:</strong> Earn rewards by staking $HEIDRUN.</li>
+              <li><strong>Alpha Game Launch:</strong> 25th December 2024.</li>
+              <li><strong>Flooz Sign-Up:</strong> Enabling direct purchases.</li>
             </ul>
+          </div>
+      
+          <div class="roadmap-phase right">
+            <h2>Q1 2025</h2>
+            <ul>
+              <li><strong>AR Game Development:</strong> Core mechanics for real-world exploration and combat initiated.</li>
+              <li><strong>Heidrun Media Bot:</strong> Launched as an AI-powered meme/video generator for the community.</li>
+              <li><strong>Community Growth:</strong> Expand the Viking community through partnerships.</li>
+            </ul>
+          </div>
+      
+          <div class="roadmap-phase left">
+            <h2>Q2 2025</h2>
+            <ul>
+              <li><strong>Heidrun Bot Expansion:</strong> Media Bot upgraded with enhanced meme, video, and automation tools.</li>
+              <li><strong>AR Game Expansion:</strong> Realm-based encounters, quests, and tactical battle mechanics refined.</li>
+              <li><strong>More Partnerships:</strong> Collaborate with influencers and Web3 creators.</li>
+            </ul>
+          </div>
+      
+          <div class="roadmap-phase right">
+            <h2>Q3–Q4 2025</h2>
+            <ul>
+              <li><strong>AR Game Launch:</strong> Launch of Heidrun AR Realms with 15+ creatures and 4 realms.</li>
+              <li><strong>Expanded Ecosystem:</strong> New gameplay mechanics and token utilities.</li>
+              <li><strong>Global Partnerships:</strong> Collaborate with major gaming and crypto platforms.</li>
+            </ul>
+          </div>
+      
+          <div class="roadmap-phase left">
+            <h2>2026 and Beyond</h2>
+            <ul>
+              <li><strong>Valhalla Expansion:</strong> Establish Heidrun as a leading Web3 gaming platform.</li>
+              <li><strong>NFT Integration:</strong> Introduce true ownership and revenue-sharing digital assets.</li>
+              <li><strong>Community-Driven Projects:</strong> Launch initiatives driven by the Heidrun community.</li>
+              <li><strong>Continual Innovation:</strong> Introduce cutting-edge features and gameplay experiences.</li>
+            </ul>
+          </div>
+      
         </div>
-        <div class="staking-how">
-            <h2>How Staking Works</h2>
-            <p>
-                1. Acquire $HEIDRUN tokens and connect your wallet.<br>
-                2. Use our trusted staking partner <strong>Smithii.io</strong> to stake your tokens.<br>
-                3. Select your preferred staking duration and lock your tokens.<br>
-                4. Start earning rewards instantly!
-            </p>
-        </div>
-        <a href="https://stake.smithii.io/heidrun" class="btn btn-game" target="_blank">Stake Now on Smithii.io</a>
-    </section>-->
+    </section>       
     
     <section id="socials" class="socials-section">
         <h2>Join the Heidrun Goat Community</h2>

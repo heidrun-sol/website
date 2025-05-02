@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error fetching announcements:', error);
             return [
-                "🛍️ The Heidrun Merchandise Store is now live! Grab your exclusive blockchain warrior gear today! 🚀",
-                "💥 Join the movement! Heidrun is shaping the future of blockchain innovation. 🌐"
+                "📰 Heidrun featured in AP News, Business Insider, MarketWatch & 800+ more!",
+                "🛒 The Heidrun Merchandise Store is now live! Grab your blockchain warrior gear!",
+                "⚔️ The AR Realms await. Discover Norse mythology in your world.",
+                "🪙 Heidrun NFTs arriving any moment... Secure your legend early."
             ];
         }
     };

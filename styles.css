@@ -61,27 +61,15 @@ section {
 .header-socials {
     display: flex;
     justify-content: center;
-    padding-right: 10px; 
-    padding-left: 10px;
-    gap: 15px;
-    flex: 1; 
-}
-
-.hamburger-menu {
-    flex: 1; 
-    display: flex;
-    justify-content: flex-end; 
     align-items: center;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
+    gap: 15px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .header-socials a {
     display: inline-block;
-    width: 30px; 
+    width: 30px;
     height: 30px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -99,18 +87,14 @@ section {
 }
 
 @media (max-width: 768px) {
-    .header {
-        flex-direction: row; 
-    }
-
     .header-socials {
-        padding-left: 80px;
-        gap: 10px; 
+        gap: 10px;
+        margin-top: 10px;
     }
 
     .header-socials a {
-        width: 20px; 
-        height: 20px;
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -118,63 +102,37 @@ section {
     height: 50px;
 }
 
-.navbar {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
-    transition: color 0.3s ease-in-out;
-}
-
-.navbar a:hover {
-    color: #ffd700; 
-}
-
 .cta-button {
-    background: linear-gradient(135deg, #e6b800, #d48806); 
+    background: linear-gradient(135deg, #e6b800, #d48806);
     color: #000;
-    padding: 6px 12px; 
-    font-size: 0.9rem; 
-    border-radius: 20px; 
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 20px;
     font-weight: bold;
     text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    max-width: 180px; /* limit width */
+    text-align: center;
+    margin: 0 auto; /* center in flex/column or block context */
     transition: box-shadow 0.3s ease, transform 0.2s;
 }
 
 .cta-button:hover {
     box-shadow: 0 0 10px #00BFFF, 0 0 20px #1E90FF, 0 0 30px #4682B4;
-    transform: scale(1.03); 
-}
-
-.hamburger-menu {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
+    transform: scale(1.03);
 }
 
 /*ribbon*/
 .announcement-bar {
-    background-color: #ffd900b6;
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 0;
-    overflow: hidden;
-    position: sticky;
-    top: 60px; 
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-}
+    background: linear-gradient(to right, #2c2c2c, #1f1f1f81);
+    color: #ffd700;
+    font-weight: 600;
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}  
 
 #announcement-container {
     display: flex;
@@ -401,34 +359,39 @@ section {
 }
 
 .utilities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
     gap: 20px;
+    flex-wrap: wrap;
     margin-top: 30px;
 }
 
 .utility-item {
     background: #1c1f33;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    max-width: 400px;
+    width: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .utility-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
 }
 
 .utility-image {
     max-width: 100%;
-    border-radius: 10px;
+    height: auto;
+    border-radius: 12px;
     margin-bottom: 15px;
 }
 
 .utility-item h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #ffd700;
     margin-bottom: 10px;
 }
@@ -436,7 +399,7 @@ section {
 .utility-item p {
     font-size: 1rem;
     color: #dcdcdc;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .about-btn {
@@ -542,7 +505,6 @@ section {
         grid-template-columns: 1fr;
     }
 }
-
 
 #chart {
     text-align: center;
@@ -933,71 +895,6 @@ canvas#chartCanvas {
     background: #ffd700;
     transform: translateY(-50%);
 }
-
-/*#staking {
-    text-align: center;
-    padding: 60px 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(20, 20, 30, 0.8), rgba(40, 40, 50, 0.9));
-    box-shadow: 0 4px 10px rgba(255, 166, 0, 0.322);
-    border-radius: 0;
-    position: relative;
-}
-
-#staking h1 {
-    color: #ffd700; 
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-}
-
-#staking p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    color: #dcdcdc;
-    max-width: 800px;
-}
-
-.staking-benefits ul {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0;
-}
-
-.staking-benefits ul li {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #ffd700;
-    padding-left: 30px;
-    position: relative;
-}
-
-.staking-benefits ul li::before {
-    content: '✔';
-    position: absolute;
-    left: 0;
-    font-size: 1.5rem;
-    color: #ffd700;
-}
-
-#staking .btn-game {
-    background: linear-gradient(135deg, #ffd700, #d4af37);
-    color: #000;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#staking .btn-game:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-}*/
 
 .socials-section {
     padding: 60px 20px;
@@ -1465,50 +1362,6 @@ footer a:hover {
         max-width: 80%;
     }
 
-    .navbar {
-        display: flex;
-        flex-direction: column;
-        max-height: 0; 
-        overflow: hidden; 
-        transition: max-height 1s ease; 
-    }
-
-    .navbar.active {
-        max-height: 500px; 
-    }
-
-    .navbar a {
-        padding: 10px 15px; 
-        color: #ffffff; 
-        text-decoration: none; 
-        text-align: center; 
-        font-size: 1.2rem; 
-        transition: background 0.3s ease;
-    }
-
-    .navbar a:hover {
-        background: rgba(255, 255, 255, 0.2); 
-        border-radius: 5px; 
-    }
-
-    .hamburger-menu {
-        display: block; 
-        font-size: 24px; 
-        color: #ffffff; 
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: transform 0.3s ease, color 0.3s ease;
-        z-index: 1100; 
-    }
-
-    .navbar.active + .hamburger-menu,
-    .hamburger-menu.x {
-        color: #ffd700; 
-        font-size: 28px; 
-        transform: rotate(90deg); 
-    }
-
     .playg-game-button {
         background: linear-gradient(135deg, #e6b800, #d48806); 
         padding: 8px 16px; 
@@ -1584,43 +1437,6 @@ footer a:hover {
     .btn-buy {
         font-size: 1rem;
         padding: 8px 16px;
-    }
-
-     #chart {
-        padding: 30px 10px; 
-    }
-
-    .chart-container {
-        width: 90%; 
-        max-width: 100%; 
-        margin: 0 auto; 
-    }
-
-    #chart h1 {
-        font-size: 2rem; 
-    }
-
-    .chart-container,
-    #chart-video {
-        max-width: 95%; 
-    }
-
-    canvas#chartCanvas {
-        max-width: 100%;
-        height: auto;
-    }
-
-    #chart-summary {
-        font-size: 0.9rem;
-    }
-
-    #fallback-message {
-        font-size: 0.9rem;
-    }
-
-    #fallback-button {
-        padding: 8px 16px;
-        font-size: 0.9rem;
     }
 
     #about {
@@ -1708,3 +1524,343 @@ footer a:hover {
         transform: scale(1.05);
     }
 }
+
+/* -------------------
+   HEIDRUN AR REALMS
+-------------------- */
+#ar-realms {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1a1f2e, #10131a98);
+    color: #eaeaea;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.562);
+  }
+  
+  #ar-realms h1.section-title {
+    font-size: 2.8rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  }
+  
+  #ar-realms h2 {
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  
+  #ar-realms h3 {
+    font-size: 1.4rem;
+    color: #90ee90;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  #ar-realms p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #ar-realms ul {
+    list-style: disc inside;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding-left: 20px;
+  }
+  
+  #ar-realms ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #dcdcdc;
+  }
+  
+  #ar-realms em {
+    color: #32cd32;
+    font-style: italic;
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* -------------------
+     HEIDRUN NFT SECTION
+  -------------------- */
+  #nfts {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #2a1f33, #100f1a88);
+    text-align: center;
+    color: #eaeaea;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  #nfts .section-title {
+    font-size: 2.6rem;
+    color: #ffd700;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 15px;
+  }
+  
+  .nft-intro {
+    font-size: 1.2rem;
+    color: #90ee90;
+    margin-bottom: 20px;
+  }
+  
+  .nft-preview {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    max-width: 90%;
+  }
+  
+  .nft-blurred {
+    width: 100%;
+    max-width: 500px;
+    filter: blur(6px) brightness(0.4);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  
+  .nft-coming-soon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    color: #ffd700;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  }
+  
+  .nft-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* -------------------
+     MOBILE RESPONSIVE
+  -------------------- */
+  @media (max-width: 768px) {
+    #ar-realms h1.section-title,
+    #nfts .section-title {
+      font-size: 2rem;
+    }
+  
+    #ar-realms h2,
+    #ar-realms h3 {
+      font-size: 1.3rem;
+    }
+  
+    #ar-realms p,
+    #nfts p,
+    #nfts ul li,
+    #ar-realms ul li {
+      font-size: 1rem;
+    }
+  
+    .nft-coming-soon {
+      font-size: 1.2rem;
+      padding: 8px 16px;
+    }
+  
+    .nft-preview {
+      max-width: 100%;
+    }
+  
+    .nft-blurred {
+      max-width: 100%;
+    }
+  
+    #ar-realms ul {
+      margin: 0 10px 30px;
+      padding-left: 20px;
+    }
+  }  
+
+  #chart {
+    padding: 0;
+    background: linear-gradient(135deg, #10131a, #1a1f2e);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    margin-top: 0px;
+  }
+  
+  .dex-chart-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 70vh;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }  
+  
+  #dexscreener-embed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  #dexscreener-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .dex-chart-wrapper {
+      padding-bottom: 100%;
+    }
+  }
+  
+  .press-strip {
+    background: linear-gradient(to right, #1a1a1a, #00000081);
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .press-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .press-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffd700;
+    margin-bottom: 40px;
+  }
+  
+  .press-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .press-logos img {
+    height: 45px;
+    filter: grayscale(100%) brightness(1.3);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  
+  .press-logos img:hover {
+    filter: none;
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  .press-more {
+    font-size: 1.1rem;
+    color: #aaa;
+  }
+  
+  .press-more a {
+    color: #ffd700;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  
+  .press-more a:hover {
+    color: #fff;
+  }
+  
+  /* Mobile Fixes */
+  @media (max-width: 768px) {
+    .press-title {
+      font-size: 1.8rem;
+    }
+    .press-logos img {
+      height: 35px;
+    }
+  }
+  
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 999;
+  }
+  
+  .navbar.active {
+    display: flex;
+  }
+  
+  .navbar a {
+    padding: 15px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  .hamburger-menu {
+    display: block;
+    font-size: 28px;
+    color: #ffffff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .hamburger-menu.x {
+    color: #ffd700;
+    transform: rotate(90deg);
+  }
+  
+  @media (min-width: 769px) {
+    .hamburger-menu {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 1101;
+      font-size: 30px;
+      background: none;
+      border: none;
+      color: #f7f6f4;
+      cursor: pointer;
+    }
+  
+    .navbar.active + .hamburger-menu {
+      color: #ffd700;
+      transform: rotate(90deg);
+    }
+  }
+    
+  
+  
