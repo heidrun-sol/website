@@ -22,6 +22,8 @@
         <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
         <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
         <link rel="manifest" href="site.webmanifest">
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="swiper-bundle.min.css">
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
@@ -65,10 +67,10 @@
         <nav class="navbar">
             <a href="#hero" class="home-link">Home</a>
             <a href="#about">About</a>
+            <a href="#nfts">NFTs</a>
             <a href="/heidrunmerchstore">HeidrunMerchStore</a>
             <a href="#game">Game</a>
             <a href="#ar-realms">Heidrun AR Realms</a>
-            <a href="#nfts">NFTs</a>
             <a href="#chart">Chart</a>
             <a href="#roadmap">Roadmap</a>
             <button class="cta-button">Buy $HEIDRUN</button>
@@ -89,23 +91,21 @@
             <div class="hero-buttons">
                 <!-- Row 1 -->
                 <div class="top-buttons">
-                    <button class="playg-game-button" id="playAlphaButton">
-                        <img src="images/goat-head-logo.png" alt="playg-game-button-logo" class="playg-game-button-logo">
-                        Play Alpha V1.1
+                    <button id="playAlphaButton" class="hero-btn alpha">
+                      <img src="images/goat-head-logo.png" alt="Goat Icon"> Play Alpha V1.1
                     </button>
-            
-                    <a href="https://t.me/heidrunportal" class="btn btn-secondary" target="_blank">
-                        <img src="images/telegram.png" alt="Telegram Icon" class="btn-icon"> Join the Community
+                  
+                    <a href="#nfts" class="hero-btn nfts">
+                      <img src="images/nfts/Odin – The Overseer.jpg" alt="NFT Icon"> 💎 View NFTs
                     </a>
                 </div>
             
                 <!-- Row 2 -->
                 <div class="bottom-buttons">
-                    <button class="merch-store-button" id="merchStoreButton" onclick="window.open('https://heidrunfanmerch.store', '_blank')">
-                        <img src="images/merch-icon.png" alt="merch-button-logo" class="merch-store-logo">
-                        Forge Your Gear
+                    <button id="merchStoreButton" class="hero-btn merch" onclick="window.open('https://heidrunfanmerch.store', '_blank')">
+                      <img src="images/merch-icon.png" alt="Merch Icon"> Forge Your Gear
                     </button>
-                </div>                
+                </div>               
             </div>
                                 
         </div>
@@ -181,8 +181,56 @@
         <p class="cta-text">
             The Heidrun journey is just beginning. Join us now and help shape the future of blockchain innovation.
         </p>
-    </section>    
-
+    </section>
+    
+    <section id="nfts" class="nft-banner-section">
+        <div class="nft-banner-container">
+          
+          <!-- LEFT SLIDER -->
+          <div class="swiper banner__thumb-slider-1">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="images/nfts/Odin – The Overseer.jpg" alt="Odin – The Overseer"></div>
+              <div class="swiper-slide"><img src="images/nfts/Skadi – The Scout.jpg" alt="Skadi – The Scout"></div>
+              <div class="swiper-slide"><img src="images/nfts/Njord – The Navigator.jpg" alt="Njord – The Navigator"></div>
+              <div class="swiper-slide"><img src="images/nfts/Freya – The Flame.jpg" alt="Freya – The Flame"></div>
+              <div class="swiper-slide"><img src="images/nfts/Thor – The Vanguard.jpg" alt="Thor – The Vanguard"></div>
+            </div>
+          </div>
+      
+          <!-- CENTER SLIDER -->
+          <div class="swiper banner__thumb-slider-2">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="images/nfts/Loki – The Trickster.jpg" alt="Loki – The Trickster"></div>
+              <div class="swiper-slide"><img src="images/nfts/Tyr – The Shield.jpg" alt="Tyr – The Shield"></div>
+              <div class="swiper-slide"><img src="images/nfts/Eir – The Whisper.jpg" alt="Eir – The Whisper"></div>
+              <div class="swiper-slide"><img src="images/nfts/Fenrir – The Watcher.jpg" alt="Fenrir – The Watcher"></div>
+              <div class="swiper-slide"><img src="images/nfts/Sif – The Blade.jpg" alt="Sif – The Blade"></div>
+            </div>
+          </div>
+      
+          <!-- RIGHT SLIDER -->
+          <div class="swiper banner__thumb-slider-3">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="images/nfts/Heimdall – The Sentinel.jpg" alt="Heimdall – The Sentinel"></div>
+              <div class="swiper-slide"><img src="images/nfts/Vali – The Seeker.jpg" alt="Vali – The Seeker"></div>
+              <div class="swiper-slide"><img src="images/nfts/Bragi – The Voice.jpg" alt="Bragi – The Voice"></div>
+              <div class="swiper-slide"><img src="images/nfts/Ullr – The Tracker.jpg" alt="Ullr – The Tracker"></div>
+              <div class="swiper-slide"><img src="images/nfts/Odin – The Overseer.jpg" alt="Odin – The Overseer (repeat)"></div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="nft-description">
+            <h2>Heidrun NFT Collection</h2>
+            <p>
+              These are the <strong>very first NFTs minted exclusively for the Heidrun team</strong> — each a sacred relic of Norse legend reborn on-chain. <br><br>
+              <strong>Public minting is launching very soon in phased batches</strong> — this is your chance to be early and own a piece of Valhalla. <span style="color:#FF69B4;">🔥 FOMO is real. Don’t miss out.</span>
+            </p>
+            <a href="https://www.launchmynft.io/collections/4NycVeV231YVUNgSobxwQuSMqNLQoBU6dwfW8SNGsHDN/3McI8XqyOUAsuWzspnRr" target="_blank" class="collection-btn">View Collection</a>
+          </div>
+          
+    </section>
+      
     <section id="game" class="games-section">
         <h1>Alpha Heidrun Rush</h1>
         <h2>🎮 V1.1 Now Live and Playable! 🎮</h2>
@@ -287,22 +335,7 @@
             </iframe>
           </div>
         </div>
-    </section>                  
-
-    <section id="nfts" class="section">
-        <h1 class="section-title">🪙 HEIDRUN NFTs</h1>
-        <p class="nft-intro">Revenue-sharing digital relics from Valhalla.</p>
-      
-        <div class="nft-preview">
-          <img src="images/nft-coded-puzzle.jpg" alt="NFT Coded Teaser" class="nft-blurred">
-          <div class="nft-coming-soon"> Arriving Any Moment... Stay Ready.</div>
-        </div>
-      
-        <p class="nft-description">
-          Heidrun NFTs are not just collectibles — they unlock a share of the project’s future. 
-          Own a piece of Valhalla. Claim your legacy.
-        </p>
-    </section>       
+    </section>                               
 
     <section id="roadmap" class="section">
         <h1 class="roadmap-title">Roadmap</h1>
@@ -483,7 +516,10 @@
                 <button id="disconnectWalletButton" class="btn btn-danger">Disconnect</button>
             </div>
         </div>
-    </div>    
+    </div> 
+    
+    <!-- vendor plugins -->
+  <script src="swiper-bundle.min.js"></script>
       
 </body>
 </html>

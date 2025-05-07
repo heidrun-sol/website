@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "📰 Heidrun featured in AP News, Business Insider, MarketWatch & 800+ more!",
                 "🛒 The Heidrun Merchandise Store is now live! Grab your blockchain warrior gear!",
                 "⚔️ The AR Realms await. Discover Norse mythology in your world.",
-                "🪙 Heidrun NFTs arriving any moment... Secure your legend early."
+                "🪙 Our first NFTs are minted — Public drop coming very soon. Don’t miss it."
             ];
         }
     };
@@ -483,4 +483,47 @@ document.addEventListener('DOMContentLoaded', () => {
         timeline.style.setProperty('--line-top', `${startTop}px`);
         timeline.style.setProperty('--line-height', `${endBottom - startTop}px`);
     }
+
+    // ========================
+    // 7.Banner slider
+    // ========================
+    const swiper1 = new Swiper('.banner__thumb-slider-1', {
+        direction: 'vertical',
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 10,
+        autoplay: {
+            delay: 1,
+            disableOnInteraction: false
+        },
+        speed: 3000,
+        allowTouchMove: false
+        });
+        const swiper2 = new Swiper('.banner__thumb-slider-2', {
+            direction: 'vertical',
+            loop: true,
+            slidesPerView: 2,
+            spaceBetween: 10,
+            autoplay: {
+              delay: 1,
+              disableOnInteraction: false,
+              reverseDirection: true
+            },
+            speed: 3000,
+            allowTouchMove: false
+          });
+          
+          const swiper3 = new Swiper('.banner__thumb-slider-3', {
+            direction: 'vertical',
+            loop: true,
+            slidesPerView: 2,
+            spaceBetween: 10,
+            autoplay: {
+              delay: 1,
+              disableOnInteraction: false
+            },
+            speed: 3000,
+            allowTouchMove: false
+          });
+
 });
