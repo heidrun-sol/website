@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "📰 Heidrun featured in AP News, Business Insider, MarketWatch & 800+ more!",
                 "🛒 The Heidrun Merchandise Store is now live! Grab your blockchain warrior gear!",
                 "⚔️ The AR Realms await. Discover Norse mythology in your world.",
-                "🪙 Our first NFTs are minted — Public drop coming very soon. Don’t miss it."
+                "🎨 100 Heidrun NFTs minted — scroll down for details & collection link!",
+                "🔒 200M Team Tokens Locked Until September – View on SolSale"
             ];
+
         }
     };
 
