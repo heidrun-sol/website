@@ -1,0 +1,108 @@
+/* Heidrun v3 — Futuristic Norse x Crypto x AI */
+:root{
+  --bg-0:#07090d;--bg-1:#0b0f17;--bg-2:#0f1520;--fg-0:#e9eef8;--fg-1:#c9d1da;--fg-2:#9aa3af;
+  --red:#ff3b30;--cyan:#00e5ff;--gold:#ffd700;--accent:#8a2be2;--muted:rgba(255,255,255,.08);
+  --ring:0 0 0 1px rgba(255,255,255,.06) inset;
+}
+
+/* Base */
+html,body{background:radial-gradient(1200px 600px at 10% -10%,rgba(255,59,48,.08),transparent 60%),radial-gradient(1200px 600px at 110% 110%,rgba(0,229,255,.08),transparent 60%),linear-gradient(180deg,var(--bg-0),var(--bg-1) 30%,var(--bg-2));color:var(--fg-0)}
+body{font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif}
+h1,h2,h3,.display{font-family:'Space Grotesk','Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.container{width:min(1200px,92%);margin:0 auto}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(11,15,23,.6);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+.site-header .row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .logo{width:40px;height:40px;border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.nav{display:flex;gap:16px}
+.nav a{color:var(--fg-1);text-decoration:none;padding:8px 10px;border-radius:8px}
+.nav a:hover,.nav a.active{background:rgba(255,255,255,.08)}
+.hamburger{display:none;background:none;border:0;font-size:26px;color:#fff}
+@media(max-width:900px){.nav{display:none}.nav.open{display:flex;position:absolute;left:0;right:0;top:60px;background:rgba(11,15,23,.95);padding:10px 12px;flex-direction:column}.hamburger{display:block}}
+
+/* Hero */
+.hero-v3{position:relative;min-height:78vh;display:grid;place-items:center;padding:60px 0}
+.hero-v3 .inner{display:grid;gap:18px;text-align:center}
+.hero-v3:after{content:"";position:absolute;inset:0;background:url('images/valhalla-goat.png') center/contain no-repeat;filter:grayscale(1) brightness(.45) contrast(1.1) blur(1px);opacity:.14;mix-blend-mode:soft-light;pointer-events:none}
+.glitch-v3{font-size:clamp(2.4rem,6vw,5rem);font-weight:800;letter-spacing:.02em;text-transform:uppercase;position:relative}
+.glitch-v3:before,.glitch-v3:after{content:attr(data-text);position:absolute;inset:0}
+.glitch-v3:before{text-shadow:-2px 0 rgba(255,59,48,.75);animation:gs1 2.2s infinite linear alternate}
+.glitch-v3:after{text-shadow: 2px 0 rgba(0,229,255,.75);animation:gs2 1.8s infinite linear alternate}
+@keyframes gs1{0%{clip-path:inset(0 0 85% 0)}50%{clip-path:inset(15% 0 45% 0)}100%{clip-path:inset(70% 0 0 0)}}
+@keyframes gs2{0%{clip-path:inset(85% 0 0 0)}50%{clip-path:inset(45% 0 15% 0)}100%{clip-path:inset(0 0 70% 0)}}
+.hero-sub{color:var(--fg-2);letter-spacing:.08em;text-transform:uppercase}
+/* Hero entrance + CTA FOMO */
+.hero-v3 .inner{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+.is-loaded .hero-v3 .inner{opacity:1;transform:none}
+.cta-button{animation:fomo 6s ease-in-out 1}
+@keyframes fomo{0%{box-shadow:0 0 0 rgba(0,0,0,0)}20%{box-shadow:0 0 24px rgba(255,59,48,.35),0 0 36px rgba(0,229,255,.25)}40%{box-shadow:0 0 12px rgba(255,59,48,.2),0 0 18px rgba(0,229,255,.15)}100%{box-shadow:0 0 0 rgba(0,0,0,0)}}
+
+/* Command bar */
+.command-bar{position:fixed;right:22px;bottom:22px;display:flex;gap:10px;z-index:60}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.06);font-weight:700;cursor:pointer;text-decoration:none}
+.btn-primary{background:linear-gradient(135deg,var(--red),var(--cyan));color:#0a0c12;box-shadow:0 14px 36px rgba(0,0,0,.5),0 0 22px rgba(255,59,48,.25),0 0 34px rgba(0,229,255,.2)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+
+/* Override legacy CTA to match AI/crypto palette */
+.cta-button{background:linear-gradient(135deg,var(--red),var(--cyan));color:#0a0c12;border:1px solid rgba(255,255,255,.06);font-weight:800}
+.cta-button:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.5),0 0 22px rgba(255,59,48,.25),0 0 34px rgba(0,229,255,.2)}
+
+/* Sections */
+.section-v3{padding:54px 0;border-top:1px solid rgba(255,255,255,.06)}
+.pillars{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.pillars{grid-template-columns:1fr}}
+.title-wrap{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.runes{color:var(--fg-2);letter-spacing:.35em}
+.grid{display:grid;gap:18px}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.grid-3{grid-template-columns:1fr}}
+.card{position:relative;padding:20px;border-radius:14px;background:linear-gradient(180deg,rgba(20,24,32,.9),rgba(12,14,20,.9));box-shadow:0 10px 30px rgba(0,229,255,.15);border:1px solid rgba(255,255,255,.08)}
+
+/* NFTs rail */
+.rail{display:grid;grid-auto-flow:column;gap:12px;overflow:auto;padding-bottom:6px}
+.rail img{height:110px;width:110px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08);will-change:transform;transform-origin:center;animation:spin 18s linear infinite}
+.rail img:hover{animation:spinfast 3s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes spinfast{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:16px}
+@media(max-width:900px){.metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.metrics{grid-template-columns:1fr}}
+.metric{padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(20,24,32,.9),rgba(12,14,20,.88));border:1px solid rgba(255,255,255,.08)}
+.metric .k{color:var(--fg-2);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.metric .v{font-weight:800;font-size:1.35rem}
+
+/* Footer */
+.site-footer-v3{margin-top:40px;padding:30px 0;border-top:1px solid rgba(255,255,255,.06)}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr;text-align:center}}
+.foot-brand{display:flex;align-items:center;gap:10px}
+.foot-logo{width:28px;height:28px;filter:grayscale(1) brightness(1.8)}
+.foot-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.foot-links a{color:var(--fg-1);text-decoration:none;padding:6px 10px;border-radius:8px}
+.foot-links a:hover{background:rgba(255,255,255,.08)}
+.foot-legal{color:var(--fg-2);display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* Minimize legacy long-form content while we migrate */
+#about .mythology-intro,
+#about .about-content,
+#about .features,
+#about .utilities,
+#about .cta-text { display: none !important; }
+
+#ar-realms h2,
+#ar-realms h3,
+#ar-realms ul,
+#ar-realms p { display: none !important; }
+
+#roadmap { display: none !important; }
+
+#systems { display: none !important; }

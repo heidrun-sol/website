@@ -1,554 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <meta property="og:title" content="Heidrun - Gateway to Valhalla">
-        <meta property="og:description" content="Dive into Heidrun, the ultimate Web3 gaming adventure with immersive experiences, live charts, and staking rewards. Join the community shaping the future of crypto gaming!">
-        <meta property="og:image" content="https://heidrun.xyz/images/heidrun-web.jpg">
-        <meta property="og:video" content="https://b-whale-block.github.io/heidrun./videos/og-video.mp4">
-        <meta property="og:video:type" content="video/mp4">
-        <meta property="og:video:width" content="1280">
-        <meta property="og:video:height" content="720">
-        <meta property="og:url" content="https://heidrun.xyz">
-        <meta property="og:type" content="website">
-
-        <title>Heidrun - Gateway to Valhalla</title>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-        <link rel="manifest" href="site.webmanifest">
-        <!-- Swiper CSS -->
-        <link rel="stylesheet" href="swiper-bundle.min.css">
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.73.0/lib/index.iife.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@jup-ag/core"></script>
-        <script defer src="script.js"></script>
-    </head>    
-<body>
-    <!--Sticky button on smaller screens-->
-    <button id="walletInfoButton" class="sticky-wallet-info hidden">Wallet Info</button>
-    <div id="toastContainer" class="toast-container"></div>
-
-    <header class="header">
-        <div class="logo">
-            <video autoplay loop muted playsinline class="logo-video">
-                <source src="images/logo.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HEIDRUN // Valhalla Protocol</title>
+    <meta name="description" content="AI-native crypto forged in Norse myth. Heidrun — Valhalla Protocol." />
+    <meta property="og:title" content="HEIDRUN // Valhalla Protocol" />
+    <meta property="og:description" content="AI-native crypto, Norse-futurism, and on-chain speed." />
+    <meta property="og:image" content="images/heidrun-web.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="reign.css" />
+  </head>
+  <body>
+    <!-- AI preloader -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+      <div class="chip-preloader">
+        <div class="grid"></div>
+        <div class="sweep"></div>
+        <div class="nodes">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
         </div>
-    
-        <div class="header-socials">
-            <a href="https://t.me/heidrunportal" target="_blank" title="Telegram">
-                <img src="images/telegram-logo.png" alt="Telegram">
-            </a>
-            <a href="https://x.com/HeidrunSol" target="_blank" title="X">
-                <img src="images/x-logo.png" alt="X">
-            </a>
-            <a href="https://www.tiktok.com/@heidrun_sol" target="_blank" title="TikTok">
-                <img src="images/tiktok-icon.png" alt="TikTok">
-            </a>
-            <a href="https://www.instagram.com/heidrunsolana" target="_blank" title="Instagram">
-                <img src="images/instagram-icon.png" alt="Instagram">
-            </a>
-            <a href="https://www.coingecko.com/en/coins/heidrun" target="_blank" title="CoinGecko">
-                <img src="images/coingecko-icon.png" alt="CoinGecko">
-            </a>
-        </div>
-    
-        <button id="menuToggle" class="hamburger-menu">☰</button>
-    
-        <nav class="navbar">
-            <a href="#hero" class="home-link">Home</a>
-            <a href="#about">About</a>
-            <a href="#nfts">NFTs</a>
-            <a href="/heidrunmerchstore">HeidrunMerchStore</a>
-            <a href="#game">Game</a>
-            <a href="#ar-realms">Heidrun AR Realms</a>
-            <a href="#chart">Chart</a>
-            <a href="#roadmap">Roadmap</a>
-            <button class="cta-button">Buy $HEIDRUN</button>
-        </nav>
-    </header>    
-    
-    <!--Ribbon-->
-    <div class="announcement-bar">
-        <div id="announcement-container">
-            <!-- Content in JavaScript-->
-        </div>
+        <div class="label">CALIBRATING · RUNES</div>
+      </div>
     </div>
+    <div id="siteContent" class="site-content">
+    <header class="nav">
+      <div class="brand">
+        <img class="logo" src="images/heidrun-logo.jpg" alt="Heidrun logo" />
+        <span>HEIDRUN</span>
+      </div>
+      <nav class="links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#relics">Relics</a>
+        <a href="#bot">Media Bot</a>
+        <a href="#pulse">Pulse</a>
+        <a href="#roadmap">Roadmap</a>
+        <a id="buyLink" class="buy-link btn primary" href="#">Buy</a>
+      </nav>
+      <div class="actions">
+        <a id="buyBtn" class="btn primary" href="#">Buy</a>
+      </div>
+      <button id="burger" class="burger" aria-label="Menu">☰</button>
+    </header>
 
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to <span class="highlight">$HEIDRUN</span></h1>
-            <p>Your Gateway to Valhalla on the Blockchain</p>
-            <div class="hero-buttons">
-                <!-- Row 1 -->
-                <div class="top-buttons">
-                    <button id="playAlphaButton" class="hero-btn alpha">
-                      <img src="images/goat-head-logo.png" alt="Goat Icon"> Play Alpha V1.1
-                    </button>
-                  
-                    <a href="#nfts" class="hero-btn nfts">
-                      <img src="images/nfts/Odin – The Overseer.jpg" alt="NFT Icon"> 💎 View NFTs
-                    </a>
-                </div>
-            
-                <!-- Row 2 -->
-                <div class="bottom-buttons">
-                    <button id="merchStoreButton" class="hero-btn merch" onclick="window.open('https://heidrunfanmerch.store', '_blank')">
-                      <img src="images/merch-icon.png" alt="Merch Icon"> Forge Your Gear
-                    </button>
-                </div>               
-            </div>
-                                
-        </div>
-        <div class="hero-image">
-            <img src="images/valhalla-goat.png" alt="Heidrun Viking Goat" class="mascot">
-        </div>
-    </section>
-
-    <section id="press" class="press-strip">
-        <div class="press-inner">
-          <h2 class="press-title">🚀 Featured On</h2>
-          <div class="press-logos">
-            <img src="images/logos/apnews.png" alt="AP News">
-            <img src="images/logos/businessinsider.png" alt="Business Insider">
-            <img src="images/logos/marketwatch.png" alt="MarketWatch">
-            <img src="images/logos/morningstar.png" alt="Morningstar">
-            <img src="images/logos/digitaljournal.png" alt="Digital Journal">
+    <main>
+      <section id="home" class="hero">
+        <div class="layer goat" aria-hidden="true"></div>
+        <div id="runeMistHero" class="rune-mist rune-mist--hero" aria-hidden="true"></div>
+        <div class="inner">
+          <h1 class="display">UNLEASH <span>HEIDRUN</span></h1>
+          <p class="sub">AI-native crypto. Norse-futurism. On-chain speed.</p>
+          <div class="cta">
+            <a class="btn primary" href="#relics">Explore Relics</a>
+            <a class="btn ghost" href="./heidrunrush" target="_blank" rel="noreferrer">▶ Play Alpha</a>
           </div>
-          <p class="press-more">
-            And <a href="articles/heidrun_press_coverage.xlsx" target="_blank">800+ more</a> global features.
-          </p>
+          
         </div>
-    </section>            
+        <button id="scrollCue" class="scroll-cue" aria-label="Scroll to Relics"></button>
+      </section>
       
-    <section id="about" class="section">
-        <h1>About Heidrun</h1>
-        
-        <div class="mythology-intro">
-            <p>
-                In Norse mythology, Heidrun is a mythical goat that resides on the roof of Valhalla, the great hall of the gods in Asgard. She feeds on the leaves of the sacred tree Læraðr and produces an endless supply of mead for the Viking warriors who have died in battle and are brought to Valhalla by Odin, the Norse god. 
-            </p>
-            <p>
-                Like her mythological counterpart, Heidrun the project is designed to provide an endless stream of innovation, opportunities, and rewards for its community. We blend the enduring spirit of Norse legends with cutting-edge blockchain technology and AI to empower our users.
-            </p>
+
+      <section id="relics" class="relics">
+        <div class="head">
+          <h2>Relics</h2>
+          <p>Ancient power, reborn on-chain — the Valhalla collection.</p>
         </div>
-    
-        <div class="about-content">
-            <p>
-                Heidrun is a forward-thinking project that blends advanced blockchain technology with powerful AI tools. By combining Web3 gaming, decentralized utilities, and community-driven rewards, Heidrun redefines innovation in the crypto space.
-            </p>
-            <p>
-                Whether you're a gamer, investor, or blockchain enthusiast, Heidrun delivers immersive experiences and practical tools tailored to your needs.
-            </p>
+        <div class="stage">
+          <div class="ring" id="ring">
+            <img class="item" src="images/nfts/Odin – The Overseer.jpg" alt="Odin" />
+            <img class="item" src="images/nfts/Skadi – The Scout.jpg" alt="Skadi" />
+            <img class="item" src="images/nfts/Njord – The Navigator.jpg" alt="Njord" />
+            <img class="item" src="images/nfts/Freya – The Flame.jpg" alt="Freya" />
+            <img class="item" src="images/nfts/Thor – The Vanguard.jpg" alt="Thor" />
+            <img class="item" src="images/nfts/Loki – The Trickster.jpg" alt="Loki" />
+            <img class="item" src="images/nfts/Tyr – The Shield.jpg" alt="Tyr" />
+            <img class="item" src="images/nfts/Eir – The Whisper.jpg" alt="Eir" />
+            <img class="item" src="images/nfts/Fenrir – The Watcher.jpg" alt="Fenrir" />
+            <img class="item" src="images/nfts/Sif – The Blade.jpg" alt="Sif" />
+            <img class="item" src="images/nfts/Heimdall – The Sentinel.jpg" alt="Heimdall" />
+            <img class="item" src="images/nfts/Vali – The Seeker.jpg" alt="Vali" />
+          </div>
         </div>
-    
-        <div class="features">
-            <h2>Why Choose Heidrun?</h2>
-            <ul>
-                <li><strong>Innovative Utilities:</strong> AI-driven tools designed to optimize your crypto experience.</li>
-                <li><strong>Immersive Web3 Gaming:</strong> Seamless integration of gaming with blockchain technology.</li>
-                <li><strong>Community Empowerment:</strong> Join a growing network shaping the future of blockchain.</li>
+        <div class="collections">
+          <a class="chip" target="_blank" href="https://magiceden.io/marketplace/heidruns_legacy">Heidrun's Legacy</a>
+          <a class="chip" target="_blank" href="https://magiceden.io/marketplace/heidrun_team_genesis">Team Genesis</a>
+          <a class="chip" target="_blank" href="https://magiceden.io/marketplace/heidrun_friends_of_valhalla">Friends of Valhalla</a>
+        </div>
+
+      </section>
+
+      <!-- Media Bot — AI x Crypto tooling section -->
+      <section id="bot" class="bot">
+        <div class="wrap">
+          <div class="content">
+            <h2>Heidrun Media Bot</h2>
+            <p class="lead">AI-native media engine for the Heidrun ecosystem — generate memes, clips, and drops at crypto speed.</p>
+            <ul class="bullets">
+              <li>One-tap meme and short-form video</li>
+              <li>On-chain aware prompts and presets</li>
+              <li>Community campaigns with share links</li>
             </ul>
+            <div class="cta">
+            <a class="btn primary" href="https://t.me/HeidrunAIMedia_bot" target="_blank" rel="noreferrer">Launch Media Bot</a>
+            </div>
+          </div>
+          <div class="art">
+            <video class="bot-video" autoplay muted loop playsinline>
+              <source src="videos/video_goat.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
+      </section>
+
+      <section id="pulse" class="pulse">
+        <div class="head">
+          <h2>Network Pulse <span class="live"><span class="dot"></span> Live · <span id="pulseUpdated">—</span></span></h2>
+        </div>
+        <div class="grid">
+          <div class="card"><span class="k">Price</span><span id="pulsePrice" class="v">—</span></div>
+          <div class="card"><span class="k">Market Cap</span><span id="pulseMcap" class="v">—</span></div>
+          <div class="card"><span class="k">Liquidity</span><span id="pulseLiq" class="v">—</span></div>
+          <div class="card"><span class="k">Supply</span><span id="pulseSupply" class="v">—</span></div>
+        </div>
+      </section>
+
+      <!-- Social proof strip -->
+      <section class="press">
+        <div class="press-inner">
+          <img src="images/logos/apnews.png" alt="AP News" />
+          <img src="images/logos/businessinsider.png" alt="Business Insider" />
+          <img src="images/logos/marketwatch.png" alt="MarketWatch" />
+          <img src="images/logos/morningstar.png" alt="Morningstar" />
+          <img src="images/logos/digitaljournal.png" alt="Digital Journal" />
+        </div>
+      </section>
+
+      <section id="roadmap" class="roadmap">
+        <div class="head">
+          <h2>Roadmap</h2>
+          <p>Clear milestones. Ruthless execution.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Now</h3>
+            <ul>
+              <li>Alpha Heidrun Rush</li>
+              <li>AI Media Bot live</li>
+              <li>NFTs trading on Magic Eden</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Next</h3>
+            <ul>
+              <li>Key partnerships</li>
+              <li>AI integrations: deeper on-chain actions</li>
+              <li>Crypto gaming — delayed, not derailed</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Beyond</h3>
+            <ul>
+              <li>Guilds & territory ownership</li>
+              <li>Upgradeable relics + seasonal metas</li>
+              <li>Governance and rare drops</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
     
-        <div class="utilities">
-            <h2>Our Utilities</h2>
-            <div class="utilities-grid">
-                <div class="utility-item">
-                    <img src="images/meme-bot-preview.jpg" alt="Heidrun Media Bot" class="utility-image">
-                    <h3>Heidrun Media Bot</h3>
-                    <p>Your all-in-one tool for AI video, memes – now supercharged and unified.</p>
-                    <a href="https://t.me/HeidrunAIMedia_bot" target="_blank" class="about-btn">Launch @HeidrunAIMedia_bot</a>
-                </div>
-            </div>            
-        </div>
     
-        <div class="contract-container">
-            <h3>Contract Address</h3>
-            <span id="contract-address" class="copyable">DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM</span>
-            <button class="about-copy-btn" onclick="navigator.clipboard.writeText('DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM')">Copy</button>
-        </div>
-        
-        <div class="contract-container">
-          <h3>Team Token Lock</h3>
-          <p>200 million team tokens are <strong>locked until the end of September</strong>.</p>
-          <a href="https://solsale.app/locks/project?token=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM" 
-            target="_blank" 
-            class="about-btn">
-            View Lock on SolSale
+    <!-- Matrix-style rune rain -->
+    <canvas id="matrixRunes" class="matrix-runes" aria-hidden="true"></canvas>
+    
+
+    <footer class="foot">
+      <div class="brand">HEIDRUN</div>
+      <div class="socials">
+        <a href="https://t.me/heidrunportal" target="_blank" aria-label="Telegram">
+          <img class="icon-dark" src="images/telegram-logo.png" alt="Telegram" />
+        </a>
+        <a href="https://x.com/HeidrunSol" target="_blank" aria-label="X">
+          <img class="icon-dark" src="images/x-logo.png" alt="X" />
+        </a>
+        <a href="https://www.tiktok.com/@heidrun_sol" target="_blank" aria-label="TikTok">
+          <img class="icon-dark" src="images/tiktok-icon.png" alt="TikTok" />
+        </a>
+        <a href="https://www.instagram.com/heidrunsolana" target="_blank" aria-label="Instagram">
+          <img class="icon-dark" src="images/instagram-icon.png" alt="Instagram" />
+        </a>
+        <a href="https://www.coingecko.com/en/coins/heidrun" target="_blank" aria-label="CoinGecko">
+          <img class="icon-dark" src="images/coingecko-icon.png" alt="CoinGecko" />
+        </a>
+      </div>
+      <div class="legal">© <span id="y"></span> Heidrun. All rights reserved.</div>
+    </footer>
+    </div>
+    <!-- Global random rune words overlay (behind content, above goat) -->
+    <div id="runeWords" class="rune-words" aria-hidden="true"></div>
+    <!-- Floating AI agent button -->
+    <button id="agentBtn" class="agent-btn" aria-haspopup="dialog" aria-controls="agentPanel" aria-label="AI Agent"><span class="agent-label">AI</span></button>
+
+    <!-- Buy Modal -->
+    <div id="buyModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="buyTitle">
+      <div class="modal-body">
+        <button class="modal-close" id="buyClose" aria-label="Close">×</button>
+        <h3 id="buyTitle">Buy $HEIDRUN</h3>
+        <p class="muted">Choose your option:</p>
+        <div class="buy-grid">
+          <a class="opt" target="_blank" rel="noreferrer"
+             href="https://web3.bitget.com/en/swap/sol/DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM">
+            <img src="images/bitget-logo.png" alt="Bitget"/>
+            <span>Bitget Swap</span>
+          </a>
+          <a class="opt" target="_blank" rel="noreferrer"
+             href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM">
+            <img src="images/raydium-logo.png" alt="Raydium"/>
+            <span>Raydium</span>
+          </a>
+          <a class="opt" target="_blank" rel="noreferrer"
+             href="https://flooz.xyz/trade/DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM/solana/heidrun/heidrun">
+            <img src="images/debit-card-icon.png" alt="Bank card"/>
+            <span>Buy with Card (Flooz)</span>
           </a>
         </div>
-
-
-        <p class="cta-text">
-            The Heidrun journey is just beginning. Join us now and help shape the future of blockchain innovation.
-        </p>
-    </section>
-    
-    <section id="nfts" class="nft-banner-section">
-  <div class="nft-banner-container">
-    
-    <!-- LEFT SLIDER -->
-    <div class="swiper banner__thumb-slider-1">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/nfts/Odin – The Overseer.jpg" alt="Odin – The Overseer"></div>
-        <div class="swiper-slide"><img src="images/nfts/Skadi – The Scout.jpg" alt="Skadi – The Scout"></div>
-        <div class="swiper-slide"><img src="images/nfts/Njord – The Navigator.jpg" alt="Njord – The Navigator"></div>
-        <div class="swiper-slide"><img src="images/nfts/Freya – The Flame.jpg" alt="Freya – The Flame"></div>
-        <div class="swiper-slide"><img src="images/nfts/Thor – The Vanguard.jpg" alt="Thor – The Vanguard"></div>
       </div>
     </div>
 
-    <!-- CENTER SLIDER -->
-    <div class="swiper banner__thumb-slider-2">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/nfts/Loki – The Trickster.jpg" alt="Loki – The Trickster"></div>
-        <div class="swiper-slide"><img src="images/nfts/Tyr – The Shield.jpg" alt="Tyr – The Shield"></div>
-        <div class="swiper-slide"><img src="images/nfts/Eir – The Whisper.jpg" alt="Eir – The Whisper"></div>
-        <div class="swiper-slide"><img src="images/nfts/Fenrir – The Watcher.jpg" alt="Fenrir – The Watcher"></div>
-        <div class="swiper-slide"><img src="images/nfts/Sif – The Blade.jpg" alt="Sif – The Blade"></div>
-      </div>
-    </div>
-
-    <!-- RIGHT SLIDER -->
-    <div class="swiper banner__thumb-slider-3">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/nfts/Heimdall – The Sentinel.jpg" alt="Heimdall – The Sentinel"></div>
-        <div class="swiper-slide"><img src="images/nfts/Vali – The Seeker.jpg" alt="Vali – The Seeker"></div>
-        <div class="swiper-slide"><img src="images/nfts/Bragi – The Voice.jpg" alt="Bragi – The Voice"></div>
-        <div class="swiper-slide"><img src="images/nfts/Ullr – The Tracker.jpg" alt="Ullr – The Tracker"></div>
-        <div class="swiper-slide"><img src="images/nfts/Odin – The Overseer.jpg" alt="Odin – The Overseer (repeat)"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="nft-description">
-    <h2>Heidrun NFT Collections</h2>
-    <p>
-      🔥 <strong>100 NFTs already minted</strong> and live on Magic Eden! <br>
-      These are sacred relics of Norse legend, reborn on-chain as part of Heidrun’s expanding multiverse. <br><br>
-      🎨 <strong>Public collection will open soon — scroll for details and links below:</strong>
-    </p>
-
-    <ul style="list-style: none; padding-left: 0;">
-      <li>🔗 <strong>Heidrun's Legacy</strong> (available to buy soon):<br>
-        <a href="https://magiceden.io/marketplace/heidruns_legacy" target="_blank" class="collection-btn">
-          View Heidrun's Legacy on Magic Eden
-        </a>
-      </li><br>
-      <li>👥 <strong>Heidrun Team Genesis</strong> (for viewing):<br>
-        <a href="https://magiceden.io/marketplace/heidrun_team_genesis" target="_blank" class="collection-btn">
-          View Team Genesis
-        </a>
-      </li><br>
-      <li>🛡️ <strong>Heidrun Friends of Valhalla</strong> (for viewing):<br>
-        <a href="https://magiceden.io/marketplace/heidrun_friends_of_valhalla" target="_blank" class="collection-btn">
-          View Friends of Valhalla
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-      
-    <section id="game" class="games-section">
-        <h1>Alpha Heidrun Rush</h1>
-        <h2>🎮 V1.1 Now Live and Playable! 🎮</h2>
-        <div class="game-info">
-            <p>
-                <strong>About the Game:</strong> Alpha V1.0 of Heidrun Rush is a Candy Crush-style game where players can enjoy exciting gameplay while transacting directly in Solana. Purchases in-game go to the dev wallet, and we are exploring whether to <strong>burn Heidrun</strong> or use it for the <strong>staking rewards pool</strong>.
-            </p>
-            <p>
-                <strong>Future Plans:</strong> In Alpha V2.0, we aim to enable transactions directly in Heidrun and integrate feedback from players for an enhanced experience.
-            </p>
-            <p>
-                <strong>Game Hosting:</strong> The game is hosted directly on Heidrun’s servers and uses Solana’s approved Unity SDK for web3 connection. Please choose <strong>Mobile Wallet Adapter → Phantom/Solflare</strong> to connect.
-            </p>
-        </div>
-        <div class="game-actions">
-            <button class="cta-button" onclick="window.open('./heidrunrush', '_blank');">
-                Play Alpha V1.1
-            </button>            
-        </div>
-    </section>
-    
-    <section id="ar-realms" class="section">
-        <h1 class="section-title">⚔️ HEIDRUN AR REALMS ⚔️</h1>
-        <p class="intro">Where Norse Mythology Meets Your World</p>
-      
-        <h2>🌍 DISCOVER THE NINE REALMS IN YOUR BACKYARD</h2>
-        <p>
-          Heidrun AR Realms transforms your everyday surroundings into a living Norse mythology adventure. Using cutting-edge AR technology, we bring legendary creatures and ancient artifacts from Asgard, Jotunheim, and beyond into your reality.
-        </p>
-        <ul>
-          <li>Encounter frost giants near water fountains</li>
-          <li>Discover light elves dancing in local parks</li>
-          <li>Witness dwarven craftsmen forging mythical weapons in urban centers</li>
-        </ul>
-      
-        <h2>🧝‍♂️ COLLECT LEGENDARY BEINGS</h2>
-        <p>
-          From Odin’s ravens to fearsome wolves descended from Fenrir, collect dozens of Norse mythology creatures to discover, battle, and evolve.
-        </p>
-        <p>
-          Each being has unique strengths tied to their realm. Train your collection, evolve them, and build your ultimate mythological team.
-        </p>
-      
-        <h2>⚔️ BATTLE FOR GLORY</h2>
-        <p>Master tactical turn-based combat against wild creatures or challenge other players!</p>
-        <ul>
-          <li>Use elemental advantages, special abilities, and rune enhancements</li>
-          <li>Join forces with friends in legendary raid boss battles</li>
-          <li>Prove your might and rise through the ranks</li>
-        </ul>
-      
-        <h2>🏰 CLAIM YOUR TERRITORY</h2>
-        <p>Stake your claim in the real world to establish your legacy in Valhalla!</p>
-        <ul>
-          <li>Build structures to generate resources, attract rare creatures, and boost allies</li>
-          <li>Join a guild and battle for control in epic realm-vs-realm conflicts</li>
-        </ul>
-      
-        <h2>⚡️ OUR JOURNEY TO RAGNARÖK: A THREE-PHASE ADVENTURE</h2>
-        <h3>PHASE 1: EXPLORATION BEGINS (Q4 2025)</h3>
-        <ul>
-          <li>Discover 15+ creatures from 4 realms</li>
-          <li>Experience core AR exploration and combat</li>
-          <li>Complete quests and achievements</li>
-          <li>Begin your journey as a Rune Hunter</li>
-          <li>Traditional game economy to build your team</li>
-        </ul>
-      
-        <h3>PHASE 2: POWER OF THE RUNES (Q2/Q3 2026)</h3>
-        <ul>
-          <li>Solana blockchain integration</li>
-          <li>Earn $HRAR tokens through gameplay</li>
-          <li>Unlock 10+ new creatures</li>
-          <li>Join guilds, compete on leaderboards</li>
-          <li>Participate in seasonal events</li>
-        </ul>
-      
-        <h3>PHASE 3: TRUE OWNERSHIP (Q4 2026)</h3>
-        <ul>
-          <li>Rare creatures/items become NFTs</li>
-          <li>Trade freely in the player marketplace</li>
-          <li>Enter PvP tournaments with your NFTs</li>
-          <li>Claim real-world territory</li>
-          <li>Vote on the game's future through community governance</li>
-        </ul>
-      
-        <h2>⚡️ JOIN THE SAGA</h2>
-        <p>
-          Whether you're a mythology buff, AR gamer, or Web3 explorer, Heidrun AR Realms offers an unforgettable adventure.
-        </p>
-        <p>
-          Be part of our phased rollout, shape the evolution of the Nine Realms, and claim your place in digital Valhalla.
-        </p>
-        <p><em>The ravens are watching 👀. The realms are waiting. Your legend begins soon.</em></p>
-    </section>      
-    
-    <section id="chart" class="section">
-        <div class="dex-chart-wrapper">
-          <div id="dexscreener-embed">
-            <iframe 
-              src="https://dexscreener.com/solana/FuWUQTctdsgTpW4ypxmSVnHw5txNo65RoHxzTaK5XKF4?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15">
-            </iframe>
-          </div>
-        </div>
-    </section>                               
-
-    <section id="roadmap" class="section">
-        <h1 class="roadmap-title">Roadmap</h1>
-        <div class="roadmap-timeline">
-      
-          <div class="roadmap-phase left">
-            <h2>Q4 2024</h2>
-            <ul>
-              <li><strong>Token Launch:</strong> Successful launch of $HEIDRUN.</li>
-              <li><strong>Initial Game Launch:</strong> Players engage with our first game.</li>
-              <li><strong>Staking Launch:</strong> Earn rewards by staking $HEIDRUN.</li>
-              <li><strong>Alpha Game Launch:</strong> 25th December 2024.</li>
-              <li><strong>Flooz Sign-Up:</strong> Enabling direct purchases.</li>
-            </ul>
-          </div>
-      
-          <div class="roadmap-phase right">
-            <h2>Q1 2025</h2>
-            <ul>
-              <li><strong>AR Game Development:</strong> Core mechanics for real-world exploration and combat initiated.</li>
-              <li><strong>Heidrun Media Bot:</strong> Launched as an AI-powered meme/video generator for the community.</li>
-              <li><strong>Community Growth:</strong> Expand the Viking community through partnerships.</li>
-            </ul>
-          </div>
-      
-          <div class="roadmap-phase left">
-            <h2>Q2 2025</h2>
-            <ul>
-              <li><strong>Heidrun Bot Expansion:</strong> Media Bot upgraded with enhanced meme, video, and automation tools.</li>
-              <li><strong>AR Game Expansion:</strong> Realm-based encounters, quests, and tactical battle mechanics refined.</li>
-              <li><strong>More Partnerships:</strong> Collaborate with influencers and Web3 creators.</li>
-            </ul>
-          </div>
-      
-          <div class="roadmap-phase right">
-            <h2>Q3–Q4 2025</h2>
-            <ul>
-              <li><strong>AR Game Launch:</strong> Launch of Heidrun AR Realms with 15+ creatures and 4 realms.</li>
-              <li><strong>Expanded Ecosystem:</strong> New gameplay mechanics and token utilities.</li>
-              <li><strong>Global Partnerships:</strong> Collaborate with major gaming and crypto platforms.</li>
-            </ul>
-          </div>
-      
-          <div class="roadmap-phase left">
-            <h2>2026 and Beyond</h2>
-            <ul>
-              <li><strong>Valhalla Expansion:</strong> Establish Heidrun as a leading Web3 gaming platform.</li>
-              <li><strong>NFT Integration:</strong> Introduce true ownership and revenue-sharing digital assets.</li>
-              <li><strong>Community-Driven Projects:</strong> Launch initiatives driven by the Heidrun community.</li>
-              <li><strong>Continual Innovation:</strong> Introduce cutting-edge features and gameplay experiences.</li>
-            </ul>
-          </div>
-      
-        </div>
-    </section>       
-    
-    <section id="socials" class="socials-section">
-        <h2>Join the Heidrun Goat Community</h2>
-        <p>Stay updated with the latest news, exclusive giveaways, and more!</p>
-        <div class="socials-container">
-            <!-- Social Icons -->
-            <div class="socials-grid">
-                <a href="https://t.me/heidrunportal" target="_blank" class="social-icon" title="Telegram">
-                    <img src="images/telegram-logo.png" alt="Telegram">
-                </a>
-                <a href="https://x.com/HeidrunSol" target="_blank" class="social-icon" title="X">
-                    <img src="images/x-logo.png" alt="X">
-                </a>
-                <a href="https://www.tiktok.com/@heidrun_sol" target="_blank" class="social-icon" title="Tiktok">
-                    <img src="images/tiktok-icon.png" alt="Tiktok">
-                </a>
-                <a href="https://www.instagram.com/heidrunsolana" target="_blank" class="social-icon" title="Instagram">
-                    <img src="images/instagram-icon.png" alt="Instagram">
-                </a>
-                <a href="https://www.coingecko.com/en/coins/heidrun" target="_blank" class="social-icon" title="CoinGecko">
-                    <img src="images/coingecko-icon.png" alt="CoinGecko">
-                </a>
-            </div>
+    <!-- AI Agent Compact Panel -->
+    <div id="agentPanel" class="agent-panel" aria-hidden="true" role="dialog" aria-labelledby="agentTitle">
+      <button class="agent-close" id="agentClose" aria-label="Close">×</button>
+      <div class="agent-head">
         
-            <div class="goat-image">
-                <img src="videos/phone-in-hand-unscreen.gif" alt="Heidrun Goat Character">
-            </div>
+        <div class="agent-title">
+          <strong id="agentTitle">AI Agents</strong>
+          <span class="agent-sub">Coming soon to magnify your success</span>
         </div>
-    </section>            
-    
-    <footer>
-        <p>&copy; 2025 Heidrun. All Rights Reserved.</p>
-    </footer> 
+      </div>
+      <div class="agent-body">
+        <p>Autonomous insights, content, and on‑chain actions — launching soon.</p>
+      </div>
+    </div>
 
-    <!-- Modal Background -->
-    <div id="buyModal" class="modal">
-        <div class="modal-content">
-            <h2>Buy $HEIDRUN</h2>
-            <p>Choose your payment method:</p>
-            <div class="pay-options">
-                <!-- Connect Wallet -->
-                <button class="pay-option connect-wallet">
-                    <img src="images/solana-logo.png" alt="Solana Logo" class="payment-icon connect-icon">
-                    <span>Connect Wallet</span>
-                </button>
-    
-                <!-- Buy on Bitget -->
-                <a href="https://web3.bitget.com/en/swap/sol/DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM"
-                    class="pay-option bitget-option"
-                    target="_blank">
-                    <img src="images/bitget-logo.png" alt="Bitget Wallet" class="payment-icon bitget-icon">
-                    <span>Buy on Bitget Wallet</span>
-                </a>
-
-                <!-- Buy on Raydium -->
-                <a href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM"
-                   class="pay-option raydium-option"
-                   target="_blank">
-                    <img src="images/raydium-logo.png" alt="Raydium Logo" class="payment-icon raydium-icon">
-                    <span>Buy on Raydium</span>
-                </a>
-    
-                <!-- Buy with Bank Card -->
-                <a href="https://flooz.xyz/trade/DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM/solana/heidrun/heidrun"
-                   class="pay-option card-option"
-                   target="_blank">
-                    <img src="images/debit-card-icon.png" alt="Bank Card" class="payment-icon card-icon">
-                    <span>Buy with Bank Card</span>
-                </a>
-            </div>
-            <button class="close-modal">Close</button>
-        </div>
-    </div>    
-
-    <!-- Wallet Info Modal -->
-    <div id="walletInfoModal" class="modal" aria-hidden="true">
-        <div class="modal-content">
-            <button class="close-modal" id="walletCloseModal">X</button>
-          <h2>Wallet Balance</h2>
-          <div class="balance-section">
-            <div class="balance-row">
-              <span class="token-name">$HEIDRUN:</span>
-              <span class="token-value" id="heidrunBalance">0.00</span>
-            </div>
-            <div class="balance-row">
-              <span class="token-name">$SOLANA:</span>
-              <span class="token-value" id="solBalance">1.0600</span>
-            </div>
-          </div>
-      
-            <h3>Swap $HEIDRUN</h3>
-            <div class="swap-section">
-                <!-- From Section -->
-                <div class="balance-row">
-                    <label for="fromToken" class="token-name">From:</label>
-                    <div class="input-container">
-                        <input type="text" id="fromToken" value="SOL" readonly>
-                        <input type="number" id="fromAmount" placeholder="0" min="0">
-                    </div>
-                </div>
-                
-                <button id="swapButton" class="swap-icon">
-                    <img src="images/swap-icon.png" alt="Swap">
-                </button>
-                
-                <div class="balance-row">
-                    <label for="toToken" class="token-name">To:</label>
-                    <div class="input-container">
-                        <input type="text" id="toToken" value="HEIDRUN" readonly>
-                        <input type="number" id="toAmount" placeholder="0" min="0">
-                    </div>
-                </div>
-            
-      
-                <!-- Slippage Tolerance -->
-                <div class="slippage-container">
-                    <label for="slippageTolerance">Slippage Tolerance (%):</label>
-                    <input type="number" id="slippageTolerance" value="1" min="0" max="100">
-                </div>
-      
-                <!-- Action Buttons -->
-                <button id="confirmSwapButton" class="btn btn-success">Confirm Swap</button>
-                <button id="disconnectWalletButton" class="btn btn-danger">Disconnect</button>
-            </div>
-        </div>
-    </div> 
-    
-    <!-- vendor plugins -->
-  <script src="swiper-bundle.min.js"></script>
-      
-</body>
+    <script src="reign.js" defer></script>
+  </body>
 </html>

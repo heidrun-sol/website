@@ -1,57 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Website loaded and interactive!');
     console.log(typeof solanaWeb3 !== 'undefined' ? 'Solana Web3 is loaded' : 'Solana Web3 is not loaded');
-    // Ribbon
-    const container = document.getElementById('announcement-container');
-
-    // Fetch announcements from API or use default messages on error
-    const fetchAnnouncements = async () => {
-        try {
-            // API call - replace with actual endpoint
-            const response = await fetch('https://example.com/api/announcements');
-            if (!response.ok) throw new Error('Failed to fetch announcements');
-            const data = await response.json();
-
-            return data.messages;
-        } catch (error) {
-            console.error('Error fetching announcements:', error);
-            return [
-                "📰 Heidrun featured in AP News, Business Insider, MarketWatch & 800+ more!",
-                "🛒 The Heidrun Merchandise Store is now live! Grab your blockchain warrior gear!",
-                "⚔️ The AR Realms await. Discover Norse mythology in your world.",
-                "🎨 100 Heidrun NFTs minted — scroll down for details & collection link!",
-                "🔒 200M Team Tokens Locked Until September – View on SolSale"
-            ];
-
-        }
-    };
-
-    // Populate the container with announcements and duplicate for seamless scrolling
-    const populateAnnouncements = async () => {
-        const messages = await fetchAnnouncements();
-
-        // Duplicate messages to create a smooth infinite loop
-        container.innerHTML = messages.map(msg => `<span>${msg}</span>`).join('');
-        container.innerHTML += container.innerHTML; // Double the content for seamless scrolling
-    };
-
-    let offset = 0;
-    const scrollSpeed = 0.5; // Adjust this value to control the scrolling speed
-
-    // Scroll announcements infinitely
-    const scrollAnnouncements = () => {
-        offset -= scrollSpeed;
-        if (Math.abs(offset) >= container.scrollWidth / 2) {
-            offset = 0; // Reset when halfway to loop seamlessly
-        }
-        container.style.transform = `translateX(${offset}px)`;
-        requestAnimationFrame(scrollAnnouncements);
-    };
-
-    // Initialize the announcement scrolling
-    populateAnnouncements().then(() => {
-        scrollAnnouncements();
-    });
+    // Ribbon removed per redesign
 
     // ========================
     // 1. Navigation Controls
@@ -94,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     // 2. Modal Controls + Sticky Wallet Info Button
     // ========================
-    const buyButton = document.querySelector('.cta-button'); // Buy button
+    const buyButton = document.getElementById('globalBuyButton'); // Dedicated global buy button
     const modal = document.getElementById('buyModal'); // Buy Options Modal
     const walletInfoModal = document.getElementById('walletInfoModal'); // Wallet Info Modal
     const closeModal = document.querySelector('.close-modal'); // Close button for Buy Modal
@@ -188,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     // 3. Wallet Connection
     // ========================
-    const connectWalletButton = document.querySelector('.connect-wallet'); 
+    const connectWalletButtons = document.querySelectorAll('.connect-wallet'); 
     const disconnectWalletButton = document.getElementById('disconnectWalletButton'); 
 
     async function connectWallet(isAutoReconnect = false) {
@@ -310,9 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Event Listeners
-    connectWalletButton?.addEventListener('click', () => connectWallet(false));
+    if (connectWalletButtons?.length) {
+        connectWalletButtons.forEach(btn => btn.addEventListener('click', () => connectWallet(false)));
+    }
     disconnectWalletButton?.addEventListener('click', disconnectWallet);
     
+    // Mark page loaded for entrance animations
+    document.documentElement.classList.add('is-loaded');
+
     // Check wallet connection on page load
     checkWalletConnection();
 
@@ -486,46 +441,83 @@ document.addEventListener('DOMContentLoaded', () => {
         timeline.style.setProperty('--line-height', `${endBottom - startTop}px`);
     }
 
+    // NFTs: CSS rail replaces Swiper banners; no JS needed
+
     // ========================
-    // 7.Banner slider
+    // 8. Particles + Parallax
     // ========================
-    const swiper1 = new Swiper('.banner__thumb-slider-1', {
-        direction: 'vertical',
-        loop: true,
-        slidesPerView: 2,
-        spaceBetween: 10,
-        autoplay: {
-            delay: 1,
-            disableOnInteraction: false
-        },
-        speed: 3000,
-        allowTouchMove: false
+    const particlesTarget = document.getElementById('hero-particles');
+    if (particlesTarget && window.particlesJS) {
+        try {
+            window.particlesJS('hero-particles', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 800 } },
+                    color: { value: ['#ff3b30', '#00e5ff'] },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.2 },
+                    size: { value: 2, random: true },
+                    line_linked: { enable: true, distance: 120, color: '#ffffff', opacity: 0.08, width: 1 },
+                    move: { enable: true, speed: 1.2, direction: 'none', out_mode: 'out' }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: false } },
+                    modes: { grab: { distance: 140, line_linked: { opacity: 0.18 } } }
+                },
+                retina_detect: true
+            });
+        } catch (e) {
+            console.warn('Particles init failed:', e);
+        }
+    }
+
+    // 9. Scroll reveal for holo-cards
+    const revealEls = document.querySelectorAll('.reveal-on-scroll');
+    if (revealEls.length) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+        revealEls.forEach(el => io.observe(el));
+    }
+
+    const heroEl = document.getElementById('hero');
+    const mascot = document.querySelector('.hero-image .mascot');
+    if (heroEl && mascot) {
+        heroEl.addEventListener('mousemove', (e) => {
+            const rect = heroEl.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            mascot.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
         });
-        const swiper2 = new Swiper('.banner__thumb-slider-2', {
-            direction: 'vertical',
-            loop: true,
-            slidesPerView: 2,
-            spaceBetween: 10,
-            autoplay: {
-              delay: 1,
-              disableOnInteraction: false,
-              reverseDirection: true
-            },
-            speed: 3000,
-            allowTouchMove: false
-          });
-          
-          const swiper3 = new Swiper('.banner__thumb-slider-3', {
-            direction: 'vertical',
-            loop: true,
-            slidesPerView: 2,
-            spaceBetween: 10,
-            autoplay: {
-              delay: 1,
-              disableOnInteraction: false
-            },
-            speed: 3000,
-            allowTouchMove: false
-          });
+        heroEl.addEventListener('mouseleave', () => {
+            mascot.style.transform = '';
+        });
+    }
+
+    // 10. Scrollspy for navbar
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const navLinksById = new Map(Array.from(document.querySelectorAll('.navbar a[href^="#"]')).map(a => [a.getAttribute('href').slice(1), a]));
+    if (sections.length && navLinksById.size) {
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navLinksById.forEach(link => link.classList.remove('active'));
+                    const active = navLinksById.get(id);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 });
+        sections.forEach(sec => spy.observe(sec));
+    }
+
+    // 11. Footer year
+    const yearNow = document.getElementById('yearNow');
+    if (yearNow) yearNow.textContent = new Date().getFullYear();
 
 });
