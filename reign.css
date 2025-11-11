@@ -115,6 +115,8 @@ body{position:relative;z-index:1}
 .relics .stage,.relics .collections{position:relative;z-index:1}
 .relics .head,.relics .stage,.relics .collections{width:min(1100px,92vw);margin-left:auto;margin-right:auto}
 .relics .head h2::after{content:"ᚠᚢᚦᚨᚱᚲ";display:block;margin-top:6px;color:rgba(255,255,255,.45);letter-spacing:.3em;font-size:.9rem}
+.relics-cta{text-align:center;margin-top:18px}
+.relics-cta .btn{min-width:240px;justify-content:center}
 .stage{perspective:1200px;display:grid;place-items:center;margin:18px auto}
 .stage::after{content:"";position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:70%;height:16px;border-radius:50%;filter:blur(10px);background:radial-gradient(ellipse at center, rgba(0,0,0,.5), transparent 70%)}
 /* Desktop defaults tuned smaller to avoid overlap */
@@ -271,6 +273,43 @@ body{position:relative;z-index:1}
 .roadmap .card{padding:18px 16px;border-radius:12px;background:linear-gradient(180deg,rgba(20,24,32,.92),rgba(12,14,20,.9));border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 20px rgba(0,0,0,.45)}
 .roadmap h3{margin:6px 0 10px}
 @media(max-width:900px){.roadmap .grid{grid-template-columns:1fr}}
+
+/* ABOUT PAGE */
+body.about-page{min-height:100vh;background:
+  radial-gradient(1200px 600px at 0% -10%,rgba(255,59,48,.08),transparent 60%),
+  radial-gradient(1200px 600px at 110% 110%,rgba(0,229,255,.08),transparent 60%),
+  linear-gradient(180deg,var(--bg0),var(--bg1));}
+.about-nav{position:relative;top:auto;padding:18px 24px;margin:28px auto;width:min(1100px,94vw);border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(10,14,22,.7);backdrop-filter:blur(16px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.about-nav .links{gap:12px}
+.about-nav .links a{padding:8px 12px;border-radius:999px;border:1px solid transparent}
+.about-nav .links a:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+.about-main{width:min(1100px,94vw);margin:0 auto 80px;display:flex;flex-direction:column;gap:48px}
+.about-hero{text-align:center;margin-top:40px}
+.about-hero .eyebrow{letter-spacing:.32em;color:var(--fg2);font-size:.8rem;margin-bottom:12px}
+.about-hero h1{margin:0 0 12px;font-size:clamp(2rem,5vw,3.4rem)}
+.about-hero .lede{color:var(--fg1);font-size:1.1rem;max-width:720px;margin:0 auto}
+.story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.story-grid article{padding:20px;border-radius:16px;background:linear-gradient(180deg,rgba(15,18,26,.96),rgba(6,8,12,.92));border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.story-grid h2{margin:0 0 10px;font-size:1.2rem}
+.about-pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.about-pillars .pillar{padding:18px;border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.about-pillars .tag{display:inline-flex;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.08);font-size:.75rem;letter-spacing:.2em;margin-bottom:10px;color:var(--fg1)}
+.about-timeline{border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:28px;background:rgba(8,10,16,.82);box-shadow:0 20px 60px rgba(0,0,0,.55)}
+.about-timeline h2{text-align:center;margin-top:0;margin-bottom:18px}
+.about-timeline ol{list-style:none;padding:0;margin:0;counter-reset:abt}
+.about-timeline li{counter-increment:abt;padding:16px 0;border-top:1px solid rgba(255,255,255,.08)}
+.about-timeline li:first-child{border-top:0}
+.about-timeline strong{display:block;font-size:1.05rem;margin-bottom:4px}
+.about-timeline li::before{content:counter(abt,decimal-leading-zero);font-size:.85rem;letter-spacing:.2em;color:var(--fg2);display:block;margin-bottom:6px}
+.about-cta{text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:26px;background:rgba(10,14,22,.78);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.about-cta p{margin:0 0 14px;font-size:1.1rem;color:var(--fg1)}
+.about-cta .cta-buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.about-foot{margin-bottom:32px;text-align:center;gap:4px;color:var(--fg2)}
+@media(max-width:720px){
+  .about-nav{flex-direction:column;gap:18px}
+  .about-nav .links{flex-wrap:wrap;justify-content:center}
+  .about-nav .actions{width:100%;justify-content:center}
+}
 
 /* FOOTER */
 .foot{padding:28px 4vw;border-top:1px solid rgba(255,255,255,.06);display:grid;gap:10px;justify-items:center;color:var(--fg2)}
