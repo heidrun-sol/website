@@ -15,7 +15,7 @@
         <img class="logo" src="images/heidrun-logo.jpg" alt="Heidrun logo" />
         <span>HEIDRUN</span>
       </div>
-      <nav class="links about-links">
+      <nav class="links about-links" id="aboutNavLinks">
         <a href="index.html#home">Home</a>
         <a href="index.html#relics">Relics</a>
         <a href="index.html#bot">Media Bot</a>
@@ -25,13 +25,14 @@
         <a class="btn ghost" href="./heidrunrush" target="_blank" rel="noreferrer">▶ Play Alpha</a>
         <a class="btn primary" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM" target="_blank" rel="noreferrer">Buy</a>
       </div>
+      <button id="aboutBurger" class="burger" aria-label="Menu">☰</button>
     </header>
 
     <main class="about-main">
       <section class="about-hero">
         <p class="eyebrow">VALHALLA PROTOCOL DOSSIER</p>
         <h1>Heidrun: the goat that feeds Valhalla and now the chain.</h1>
-        <p class="lede">Born in Norse myth, reborn on Solana. Heidrun channels AI-native production, crypto speed, and gaming-grade obsession into a single cult brand.</p>
+        <p class="lede">Born in Norse mythology, reborn on Solana. Heidrun channels AI-native production, crypto speed, and gaming-grade obsession into a single cult brand.</p>
       </section>
 
       <section class="story-grid">
@@ -102,6 +103,42 @@
     <script>
       const yearSlot = document.getElementById('aboutYear');
       if(yearSlot){ yearSlot.textContent = new Date().getFullYear(); }
+
+      const aboutBurger = document.getElementById('aboutBurger');
+      const aboutLinks = document.getElementById('aboutNavLinks');
+      if (aboutBurger && aboutLinks) {
+        const openMenu = () => {
+          aboutLinks.style.display = 'flex';
+          aboutLinks.style.flexDirection = 'column';
+          aboutLinks.style.position = 'absolute';
+          aboutLinks.style.left = '0';
+          aboutLinks.style.right = '0';
+          aboutLinks.style.top = '70px';
+          aboutLinks.style.background = 'rgba(10,14,22,.95)';
+          aboutLinks.style.padding = '12px 16px';
+          aboutBurger.textContent = '×';
+          aboutBurger.setAttribute('aria-expanded', 'true');
+          aboutBurger.setAttribute('aria-label', 'Close menu');
+        };
+        const closeMenu = () => {
+          aboutLinks.removeAttribute('style');
+          aboutBurger.textContent = '☰';
+          aboutBurger.setAttribute('aria-expanded', 'false');
+          aboutBurger.setAttribute('aria-label', 'Menu');
+        };
+        aboutBurger.addEventListener('click', () => {
+          const isOpen = aboutLinks.style.display === 'flex';
+          if (isOpen) closeMenu(); else openMenu();
+        });
+        aboutLinks.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) closeMenu();
+          });
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 900) closeMenu();
+        });
+      }
     </script>
   </body>
 </html>
