@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Heidrun Creative AI Studio</title>
+    <meta name="description" content="Prototype studio for Heidrun's creative AI prompts and media generation." />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="reign.css" />
+  </head>
+  <body class="studio-page">
+    <header class="nav">
+      <div class="brand">
+        <img class="logo" src="images/heidrun-logo.jpg" alt="Heidrun logo" />
+        <span>HEIDRUN</span>
+      </div>
+      <nav class="links" id="navLinks">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#relics">Relics</a>
+        <a href="index.html#bot">AI Studio</a>
+        <a href="index.html#pulse">Pulse</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="index.html#socials">Socials</a>
+        <a class="play-link btn ghost" href="./heidrunrush" target="_blank" rel="noreferrer">▶ Play Alpha</a>
+        <a class="buy-link btn primary" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM" target="_blank" rel="noreferrer">Buy</a>
+      </nav>
+      <div class="actions">
+        <a class="btn ghost" href="./heidrunrush" target="_blank" rel="noreferrer">▶ Play Alpha</a>
+        <a class="btn primary" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM" target="_blank" rel="noreferrer">Buy</a>
+      </div>
+      <button id="burger" class="burger" aria-label="Menu">☰</button>
+    </header>
+
+    <main class="studio-main">
+      <section class="studio-hero">
+        <p class="eyebrow">PROTOTYPE · CREATIVE AI</p>
+        <h1>Forge assets with runic-grade prompts.</h1>
+        <p class="lede">This interface previews how Heidrun's in-browser AI studio will feel: fast iterations, Norse-styled guidance, instant export to socials.</p>
+      </section>
+
+      <section class="studio-console">
+        <div class="console-head">
+          <div>
+            <h2>Prompt Console</h2>
+            <p>Type instructions, stack presets, and send to the generator.</p>
+          </div>
+          <div class="status">
+            <span class="dot"></span> Prototype Mode
+          </div>
+        </div>
+        <div class="console-body">
+          <div class="console-log" id="consoleLog" aria-live="polite">
+            <div class="msg ai">
+              <span class="sender">AI</span>
+              <p>Ready to craft. Ask for a meme, motion clip, or Norse hologram.</p>
+            </div>
+          </div>
+          <form id="promptForm" class="prompt-form">
+            <div class="chips">
+              <button type="button" data-prompt="Mythic goat mech, neon halls" class="chip">Mythic goat mech</button>
+              <button type="button" data-prompt="Valkyrie hacker drop" class="chip">Valkyrie hacker drop</button>
+              <button type="button" data-prompt="Rune rain + crypto ticker" class="chip">Rune + ticker</button>
+            </div>
+            <label class="sr-only" for="promptInput">Prompt</label>
+            <textarea id="promptInput" rows="3" placeholder="Describe the asset you want..." required></textarea>
+            <button type="submit" class="btn primary submit">Generate concept</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="studio-roadmap">
+        <h3>Planned capabilities</h3>
+        <ul>
+          <li><strong>Realtime render preview</strong><span>Adaptive canvas that shows frames as they cook.</span></li>
+          <li><strong>Preset chaining</strong><span>Stack Norse themes, market hooks, and CTAs.</span></li>
+          <li><strong>Direct share</strong><span>Push output to Telegram, X, Discord in one tap.</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="foot about-foot">
+      <div>© <span id="year"></span> Heidrun // Creative AI Studio</div>
+      <div>Prototype interface — visuals not final.</div>
+    </footer>
+
+    <script>
+      const yearSlot = document.getElementById('year');
+      if(yearSlot){ yearSlot.textContent = new Date().getFullYear(); }
+      const burger = document.getElementById('burger');
+      const links = document.getElementById('navLinks');
+      function openMenu(){
+        links.style.display = 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.left = '0'; links.style.right = '0'; links.style.top = '60px';
+        links.style.background = 'rgba(10,14,22,.95)';
+        links.style.padding = '10px 12px';
+        if (burger){ burger.textContent = 'X'; burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','Close menu'); }
+      }
+      function closeMenu(){
+        links.removeAttribute('style');
+        if (burger){ burger.textContent = '☰'; burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Menu'); }
+      }
+      burger?.addEventListener('click', ()=>{
+        const isOpen = links.style.display === 'flex';
+        if (isOpen) closeMenu(); else openMenu();
+      });
+      links?.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+        if (window.innerWidth <= 900) closeMenu();
+      }));
+      window.addEventListener('resize', ()=>{
+        if (window.innerWidth > 900) closeMenu();
+      });
+
+      const form = document.getElementById('promptForm');
+      const input = document.getElementById('promptInput');
+      const log = document.getElementById('consoleLog');
+      document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', ()=>{
+        input.value = chip.dataset.prompt;
+        input.focus();
+      }));
+      function appendMessage(type, text){
+        if (!log) return;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'msg ' + type;
+        const sender = document.createElement('span');
+        sender.className = 'sender';
+        sender.textContent = type === 'user' ? 'You' : 'AI';
+        const body = document.createElement('p');
+        body.textContent = text;
+        wrapper.appendChild(sender);
+        wrapper.appendChild(body);
+        log.appendChild(wrapper);
+        log.scrollTop = log.scrollHeight;
+      }
+      form?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const prompt = input.value.trim();
+        if (!prompt) return;
+        appendMessage('user', prompt);
+        appendMessage('ai', 'Prototype in progress — creative engine coming soon.');
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>

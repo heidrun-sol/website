@@ -212,6 +212,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('relics')?.scrollIntoView({behavior:'smooth'});
   });
 
+  // Create with AI flyout
+  const aiBtn = document.getElementById('createAiBtn');
+  const aiFlyout = document.getElementById('aiFlyout');
+  function openAiFlyout(){
+    aiFlyout?.classList.add('show');
+    aiFlyout?.setAttribute('aria-hidden','false');
+  }
+  function closeAiFlyout(){
+    aiFlyout?.classList.remove('show');
+    aiFlyout?.setAttribute('aria-hidden','true');
+  }
+  aiBtn?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    if (!aiFlyout) return;
+    const isOpen = aiFlyout.classList.contains('show');
+    if (isOpen) closeAiFlyout(); else openAiFlyout();
+  });
+
   // Agent button compact panel
   const agentBtn = document.getElementById('agentBtn');
   const agentPanel = document.getElementById('agentPanel');
@@ -222,12 +240,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (agentPanel?.classList.contains('show')) closeAgent(); else openAgent();
   });
   agentClose?.addEventListener('click', closeAgent);
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAgent(); });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='Escape'){
+      closeAgent();
+      closeAiFlyout();
+    }
+  });
   document.addEventListener('click', (e)=>{
-    if (!agentPanel || !agentBtn) return;
-    if (!agentPanel.classList.contains('show')) return;
     const t = e.target;
-    if (!agentPanel.contains(t) && t !== agentBtn){ closeAgent(); }
+    if (agentPanel && agentBtn && agentPanel.classList.contains('show')){
+      if (!agentPanel.contains(t) && t !== agentBtn){ closeAgent(); }
+    }
+    if (aiFlyout && aiBtn && aiFlyout.classList.contains('show')){
+      if (!aiFlyout.contains(t) && t !== aiBtn){ closeAiFlyout(); }
+    }
   });
 
   // =====================

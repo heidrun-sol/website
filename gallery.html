@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Heidrun Media Gallery</title>
+    <meta name="description" content="Preview zone for Heidrun's AI media drops: images and motion placeholders." />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="reign.css" />
+  </head>
+  <body class="gallery-page">
+    <header class="nav">
+      <div class="brand">
+        <img class="logo" src="images/heidrun-logo.jpg" alt="Heidrun logo" />
+        <span>HEIDRUN</span>
+      </div>
+      <nav class="links" id="navLinks">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#relics">Relics</a>
+        <a href="index.html#bot">AI Studio</a>
+        <a href="index.html#pulse">Pulse</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="index.html#socials">Socials</a>
+        <a class="play-link btn ghost" href="./heidrunrush" target="_blank" rel="noreferrer">▶ Play Alpha</a>
+        <a class="buy-link btn primary" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM" target="_blank" rel="noreferrer">Buy</a>
+      </nav>
+      <div class="actions">
+        <a class="btn ghost" href="./heidrunrush" target="_blank" rel="noreferrer">▶ Play Alpha</a>
+        <a class="btn primary" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=fuwuqtctdsgtpw4ypxmsvnhw5txno65rohxztak5xkf4&inputMint=sol&outputMint=DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM" target="_blank" rel="noreferrer">Buy</a>
+      </div>
+      <button id="burger" class="burger" aria-label="Menu">☰</button>
+    </header>
+
+    <main class="gallery-main">
+      <section class="gallery-hero">
+        <p class="eyebrow">PROTOTYPE · GALLERY</p>
+        <h1>Heidrun Media Vault</h1>
+        <p class="lede">This page will host rendered memes, motion clips, and cinematic drops. For now, explore the layout and staging.</p>
+      </section>
+
+      <section class="gallery-grid">
+        <article class="gallery-card">
+          <span class="type">Image</span>
+          <div class="frame">
+            <div class="placeholder">ᚠ</div>
+          </div>
+          <h3>Valkyrie Signal</h3>
+          <p>High-contrast still with AI-enhanced rune overlays.</p>
+        </article>
+        <article class="gallery-card">
+          <span class="type">Video</span>
+          <div class="frame">
+            <div class="placeholder">▶</div>
+          </div>
+          <h3>Goat Pulse Loop</h3>
+          <p>5s hologram loop planned for Telegram posting.</p>
+        </article>
+        <article class="gallery-card">
+          <span class="type">Image</span>
+          <div class="frame">
+            <div class="placeholder">ᛟ</div>
+          </div>
+          <h3>Rune Heatmap</h3>
+          <p>Data-driven infographic for upcoming drops.</p>
+        </article>
+        <article class="gallery-card">
+          <span class="type">Video</span>
+          <div class="frame">
+            <div class="placeholder">▶</div>
+          </div>
+          <h3>Storm Surge Teaser</h3>
+          <p>Cinematic trailer slot for the AI rush launch.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="foot about-foot">
+      <div>© <span id="galleryYear"></span> Heidrun Media Vault</div>
+      <div>Assets sync soon. This is a staging preview.</div>
+    </footer>
+
+    <script>
+      const gy = document.getElementById('galleryYear');
+      if(gy){ gy.textContent = new Date().getFullYear(); }
+      const burger = document.getElementById('burger');
+      const links = document.getElementById('navLinks');
+      function openMenu(){
+        links.style.display = 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.left = '0'; links.style.right = '0'; links.style.top = '60px';
+        links.style.background = 'rgba(10,14,22,.95)';
+        links.style.padding = '10px 12px';
+        if (burger){ burger.textContent = 'X'; burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','Close menu'); }
+      }
+      function closeMenu(){
+        links.removeAttribute('style');
+        if (burger){ burger.textContent = '☰'; burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Menu'); }
+      }
+      burger?.addEventListener('click', ()=>{
+        const isOpen = links.style.display === 'flex';
+        if (isOpen) closeMenu(); else openMenu();
+      });
+      links?.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+        if (window.innerWidth <= 900) closeMenu();
+      }));
+      window.addEventListener('resize', ()=>{
+        if (window.innerWidth > 900) closeMenu();
+      });
+    </script>
+  </body>
+</html>

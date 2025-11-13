@@ -37,9 +37,9 @@
       </div>
       <nav class="links" id="navLinks">
         <a href="#home">Home</a>
-        <a href="about.html" target="_blank" rel="noreferrer">About</a>
+        <a href="about.html">About</a>
         <a href="#relics">Relics</a>
-        <a href="#bot">Media Bot</a>
+        <a href="#bot">AI Studio</a>
         <a href="#pulse">Pulse</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#socials">Socials</a>
@@ -98,19 +98,31 @@
 
       </section>
 
-      <!-- Media Bot — AI x Crypto tooling section -->
+      <!-- AI Studio — AI x Crypto tooling section -->
       <section id="bot" class="bot">
         <div class="wrap">
           <div class="content">
-            <h2>Heidrun Media Bot</h2>
-            <p class="lead">AI-native media engine for the Heidrun ecosystem — generate memes, clips, and drops at crypto speed.</p>
+            <h2>Heidrun AI Studio</h2>
+            <p class="lead">AI-native media lab for the Heidrun ecosystem — generate memes, clips, and drops at crypto speed.</p>
             <ul class="bullets">
               <li>One-tap meme and short-form video</li>
               <li>On-chain aware prompts and presets</li>
               <li>Community campaigns with share links</li>
             </ul>
             <div class="cta">
-            <a class="btn primary" href="https://t.me/HeidrunAIMedia_bot" target="_blank" rel="noreferrer">Launch Media Bot</a>
+              <button class="btn primary" id="createAiBtn">Create with AI</button>
+              <a class="btn ghost" href="gallery.html">Gallery</a>
+            </div>
+            <div class="ai-flyout" id="aiFlyout" aria-hidden="true">
+              <p class="label">Choose your surface</p>
+              <a class="option" href="create-ai.html">
+                <span>Launch Creative AI</span>
+                <small>Chat-style studio for prompts</small>
+              </a>
+              <a class="option" href="https://t.me/HeidrunAIMedia_bot" target="_blank" rel="noreferrer">
+                <span>Launch Telegram Media Bot</span>
+                <small>Deploy instantly in your chats</small>
+              </a>
             </div>
           </div>
           <div class="art">
