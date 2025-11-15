@@ -33,9 +33,8 @@
 
     <main class="gallery-main">
       <section class="gallery-hero">
-        <p class="eyebrow">PROTOTYPE · GALLERY</p>
         <h1>Heidrun Media Vault</h1>
-        <p class="lede">This page will host rendered memes, motion clips, and cinematic drops. For now, explore the layout and staging.</p>
+        <p class="lede">Fresh drops from the Telegram showroom — and soon, direct from the Heidrun AI Studio. Every scroll unlocks new weapons.</p>
       </section>
 
       <section class="gallery-grid">
@@ -72,6 +71,10 @@
           <p>Cinematic trailer slot for the AI rush launch.</p>
         </article>
       </section>
+      <div class="gallery-controls">
+        <button id="loadMore" class="btn ghost">Load more</button>
+      </div>
+      <div id="gallerySentinel" aria-hidden="true"></div>
     </main>
 
     <footer class="foot about-foot">
@@ -79,34 +82,232 @@
       <div>Assets sync soon. This is a staging preview.</div>
     </footer>
 
+    <!-- Modal for enlarged media -->
+    <div id="galleryModal" class="gallery-modal" aria-hidden="true" role="dialog">
+      <div class="gallery-modal-body">
+        <button id="galleryModalClose" class="modal-close" aria-label="Close">×</button>
+        <div class="modal-media" id="modalMedia"></div>
+        <a id="modalDownload" class="tg-link" href="#" download target="_blank" rel="noreferrer">⬇ Download</a>
+      </div>
+    </div>
+
     <script>
-      const gy = document.getElementById('galleryYear');
-      if(gy){ gy.textContent = new Date().getFullYear(); }
-      const burger = document.getElementById('burger');
-      const links = document.getElementById('navLinks');
-      function openMenu(){
-        links.style.display = 'flex';
-        links.style.flexDirection = 'column';
-        links.style.position = 'absolute';
-        links.style.left = '0'; links.style.right = '0'; links.style.top = '60px';
-        links.style.background = 'rgba(10,14,22,.95)';
-        links.style.padding = '10px 12px';
-        if (burger){ burger.textContent = 'X'; burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','Close menu'); }
+      function initGalleryPage() {
+        const gy = document.getElementById('galleryYear');
+        if (gy) gy.textContent = new Date().getFullYear();
+
+        const burger = document.getElementById('burger');
+        const links = document.getElementById('navLinks');
+
+        function openMenu() {
+          if (!links) return;
+          links.style.display = 'flex';
+          links.style.flexDirection = 'column';
+          links.style.position = 'absolute';
+          links.style.left = '0';
+          links.style.right = '0';
+          links.style.top = '60px';
+          links.style.background = 'rgba(10,14,22,.95)';
+          links.style.padding = '10px 12px';
+          if (burger) {
+            burger.textContent = 'X';
+            burger.setAttribute('aria-expanded', 'true');
+            burger.setAttribute('aria-label', 'Close menu');
+          }
+        }
+
+        function closeMenu() {
+          if (!links) return;
+          links.removeAttribute('style');
+          if (burger) {
+            burger.textContent = '☰';
+            burger.setAttribute('aria-expanded', 'false');
+            burger.setAttribute('aria-label', 'Menu');
+          }
+        }
+
+        burger?.addEventListener('click', () => {
+          const isOpen = links?.style.display === 'flex';
+          if (isOpen) closeMenu(); else openMenu();
+        });
+
+        links?.querySelectorAll('a').forEach(a =>
+          a.addEventListener('click', () => {
+            if (window.innerWidth <= 900) closeMenu();
+          })
+        );
+
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 900) closeMenu();
+        });
+
+        const grid = document.querySelector('.gallery-grid');
+        const loadMoreBtn = document.getElementById('loadMore');
+        const sentinel = document.getElementById('gallerySentinel');
+        const modal = document.getElementById('galleryModal');
+        const modalMedia = document.getElementById('modalMedia');
+        const modalClose = document.getElementById('galleryModalClose');
+        const modalDownload = document.getElementById('modalDownload');
+        const PAGE = 6;
+        const LIVE_POLL_INTERVAL = 15000;
+        let galleryItems = [];
+        let renderedCount = 0;
+        let livePollHandle;
+
+        function createCard(item){
+          const isVideo = item.type === 'video';
+          const title = item.caption || (isVideo ? 'Showroom clip' : 'Showroom image');
+          const typeLabel = isVideo ? 'Video' : 'Image';
+          const card = document.createElement('article');
+          card.className = 'gallery-card';
+          card.innerHTML = `
+            <span class="type">${typeLabel}</span>
+            <div class="frame" data-src="${item.fileUrl}" data-type="${isVideo ? 'video' : 'image'}" data-title="${title}">
+              ${
+                isVideo
+                  ? `<video src="${item.fileUrl}" preload="metadata" muted></video>`
+                  : `<img src="${item.fileUrl}" alt="${title}" loading="lazy" />`
+              }
+            </div>
+            <h3>${title}</h3>
+            <div class="card-actions">
+              <a class="tg-link" href="${item.tgMessageLink}" target="_blank" rel="noreferrer">
+                <img src="images/telegram-logo.png" alt="Telegram" />
+                View in Telegram
+              </a>
+            </div>
+          `;
+          return card;
+        }
+
+        function renderNextBatch(){
+          if (!grid || renderedCount >= galleryItems.length) return;
+          const next = galleryItems.slice(renderedCount, renderedCount + PAGE);
+          next.forEach(item => grid.appendChild(createCard(item)));
+          renderedCount += next.length;
+          if (renderedCount >= galleryItems.length){
+            loadMoreBtn?.setAttribute('disabled','disabled');
+            loadMoreBtn && (loadMoreBtn.textContent = 'All media loaded');
+          }
+        }
+
+        function attachFrameListeners(){
+          grid?.querySelectorAll('.frame').forEach(frame => {
+            frame.addEventListener('click', ()=>{
+              const src = frame.dataset.src;
+              const type = frame.dataset.type;
+              const title = frame.dataset.title || '';
+              if (!src || !modal || !modalMedia) return;
+              modalMedia.innerHTML = type === 'video'
+                ? `<video src="${src}" controls autoplay></video>`
+                : `<img src="${src}" alt="${title}" />`;
+              modalDownload?.setAttribute('href', src);
+              modalDownload?.setAttribute('download', src.split('/').pop() || 'media');
+              modal.setAttribute('aria-hidden','false');
+              modal.classList.add('show');
+            });
+          });
+        }
+
+        function resetGalleryView(){
+          if (!grid) return;
+          grid.innerHTML = '';
+          renderedCount = 0;
+          loadMoreBtn?.removeAttribute('disabled');
+          loadMoreBtn && (loadMoreBtn.textContent = 'Load more');
+          renderNextBatch();
+          attachFrameListeners();
+        }
+
+        function getItemKey(item){
+          return item?.messageId || item?.id || item?.fileId || item?.fileUrl;
+        }
+
+        async function pollForUpdates(){
+          try{
+            const res = await fetch('http://84.246.108.93:3000/gallery', { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const items = await res.json();
+            if (!Array.isArray(items) || items.length === 0) return;
+            const currentKeys = new Set(galleryItems.map(getItemKey));
+            const newKeys = items.map(getItemKey);
+            const hasNew = newKeys.some(key => key && !currentKeys.has(key));
+            if (!hasNew) return;
+            galleryItems = items;
+            resetGalleryView();
+          }catch(err){
+            console.warn('Live gallery poll failed', err);
+          }
+        }
+
+        function startLivePolling(){
+          if (livePollHandle) clearInterval(livePollHandle);
+          livePollHandle = setInterval(pollForUpdates, LIVE_POLL_INTERVAL);
+        }
+
+        modalClose?.addEventListener('click', ()=>{
+          modal?.classList.remove('show');
+          modal?.setAttribute('aria-hidden','true');
+          modalMedia && (modalMedia.innerHTML = '');
+        });
+        modal?.addEventListener('click', (e)=>{
+          if (e.target === modal){
+            modal.classList.remove('show');
+            modal.setAttribute('aria-hidden','true');
+            modalMedia && (modalMedia.innerHTML = '');
+          }
+        });
+
+        loadMoreBtn?.addEventListener('click', ()=>{
+          renderNextBatch();
+          attachFrameListeners();
+        });
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting){
+              renderNextBatch();
+              attachFrameListeners();
+            }
+          });
+        });
+        sentinel && observer.observe(sentinel);
+
+        async function loadGallery() {
+          if (!grid) return;
+          grid.innerHTML = '<p class="lede">Loading media from the Telegram showroom…</p>';
+          try {
+            const res = await fetch('http://84.246.108.93:3000/gallery');
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const items = await res.json();
+            if (!Array.isArray(items) || items.length === 0) {
+              grid.innerHTML = '<p class="lede">No media synced yet. Post something in @HeidrunAIvideo.</p>';
+              loadMoreBtn?.setAttribute('disabled','disabled');
+              return;
+            }
+            galleryItems = items;
+            grid.innerHTML = '';
+            renderedCount = 0;
+            loadMoreBtn?.removeAttribute('disabled');
+            loadMoreBtn && (loadMoreBtn.textContent = 'Load more');
+            renderNextBatch();
+            attachFrameListeners();
+            startLivePolling();
+          } catch (err) {
+            console.error('Gallery load failed:', err);
+            grid.innerHTML = '<p class="lede">Could not load media right now. Try again in a moment.</p>';
+            loadMoreBtn?.setAttribute('disabled','disabled');
+          }
+        }
+
+        loadGallery();
       }
-      function closeMenu(){
-        links.removeAttribute('style');
-        if (burger){ burger.textContent = '☰'; burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','Menu'); }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGalleryPage);
+      } else {
+        initGalleryPage();
       }
-      burger?.addEventListener('click', ()=>{
-        const isOpen = links.style.display === 'flex';
-        if (isOpen) closeMenu(); else openMenu();
-      });
-      links?.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
-        if (window.innerWidth <= 900) closeMenu();
-      }));
-      window.addEventListener('resize', ()=>{
-        if (window.innerWidth > 900) closeMenu();
-      });
     </script>
   </body>
 </html>
